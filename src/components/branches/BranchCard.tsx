@@ -1,13 +1,18 @@
-import { Clock3, MapPin, Store } from "lucide-react";
+import { Clock3, MapPin, MessageCircle, Phone, Store } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Branch } from "../../data/siteData";
 import { viewport } from "../../utils/motion";
+import { buildWhatsAppLink } from "../../utils/whatsapp";
+import { CTAButton } from "../common/CTAButton";
 
 type BranchCardProps = {
   branch: Branch;
+  showActions?: boolean;
 };
 
-export function BranchCard({ branch }: BranchCardProps) {
+export function BranchCard({ branch, showActions = false }: BranchCardProps) {
+  const branchWhatsAppMessage = `Namaskar, mala ${branch.name} branch baddal mahiti pahije.`;
+
   return (
     <motion.article
       className="panel-card overflow-hidden"
@@ -32,6 +37,12 @@ export function BranchCard({ branch }: BranchCardProps) {
           <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
           <span>{branch.address}</span>
         </div>
+        {showActions ? (
+          <div className="flex items-start gap-3 text-sm text-brand-brown/76">
+            <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
+            <span>{branch.phone}</span>
+          </div>
+        ) : null}
         <div className="flex items-start gap-3 text-sm text-brand-brown/76">
           <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
           <span>{branch.timings}</span>
@@ -45,6 +56,24 @@ export function BranchCard({ branch }: BranchCardProps) {
           <span className="chip">{branch.specialty}</span>
           <span className="chip">{branch.vertical === "hotel" ? "Hotel vertical" : "Tea vertical"}</span>
         </div>
+        {showActions ? (
+          <div className="grid gap-3 sm:grid-cols-3">
+            <CTAButton href={branch.mapLink} target="_blank" variant="secondary">
+              Google Map
+            </CTAButton>
+            <CTAButton href={`tel:${branch.phone.replaceAll(" ", "")}`} icon={Phone} variant="secondary">
+              Call
+            </CTAButton>
+            <CTAButton
+              href={buildWhatsAppLink(branch.phone.replace(/\D/g, ""), branchWhatsAppMessage)}
+              icon={MessageCircle}
+              target="_blank"
+              variant="secondary"
+            >
+              WhatsApp
+            </CTAButton>
+          </div>
+        ) : null}
       </div>
     </motion.article>
   );

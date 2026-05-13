@@ -1,19 +1,21 @@
 import { HomeBranchPreview } from "../components/home/HomeBranchPreview";
-import { HomeGalleryPreview } from "../components/home/HomeGalleryPreview";
+import { HomeFeaturedItems } from "../components/home/HomeFeaturedItems";
+import { HomeFranchiseCTA } from "../components/home/HomeFranchiseCTA";
 import { HomeHero } from "../components/home/HomeHero";
-import { HomeInquiryStrip } from "../components/home/HomeInquiryStrip";
-import { HomeMenuPreview } from "../components/home/HomeMenuPreview";
+import { HomeSocialProof } from "../components/home/HomeSocialProof";
 import { HomeVerticalShowcase } from "../components/home/HomeVerticalShowcase";
+import { HomeWhyMatoshree } from "../components/home/HomeWhyMatoshree";
 
 export function HomePage() {
   return (
     <>
       <HomeHero />
       <HomeVerticalShowcase />
+      <HomeWhyMatoshree />
+      <HomeFeaturedItems />
       <HomeBranchPreview />
-      <HomeMenuPreview />
-      <HomeGalleryPreview />
-      <HomeInquiryStrip />
+      <HomeFranchiseCTA />
+      <HomeSocialProof />
     </>
   );
 }

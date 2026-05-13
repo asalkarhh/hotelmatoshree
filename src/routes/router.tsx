@@ -7,9 +7,11 @@ import { FranchiseInquiryPage } from "../pages/FranchiseInquiryPage";
 import { GalleryPage } from "../pages/GalleryPage";
 import { HomePage } from "../pages/HomePage";
 import { HotelFranchisePage } from "../pages/HotelFranchisePage";
+import { HotelFranchiseInquiryPage } from "../pages/HotelFranchiseInquiryPage";
 import { MenuPage } from "../pages/MenuPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { TeaFranchisePage } from "../pages/TeaFranchisePage";
+import { TeaFranchiseInquiryPage } from "../pages/TeaFranchiseInquiryPage";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +20,9 @@ export const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },
       { path: "/hotel-franchise", element: <HotelFranchisePage /> },
+      { path: "/hotel-franchise-inquiry", element: <HotelFranchiseInquiryPage /> },
       { path: "/tea-franchise", element: <TeaFranchisePage /> },
+      { path: "/tea-franchise-inquiry", element: <TeaFranchiseInquiryPage /> },
       { path: "/branches", element: <BranchesPage /> },
       { path: "/menu", element: <MenuPage /> },
       { path: "/gallery", element: <GalleryPage /> },

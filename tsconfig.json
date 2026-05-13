@@ -8,6 +8,7 @@
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "strict": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Bundler",

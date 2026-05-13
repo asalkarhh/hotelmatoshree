@@ -10,6 +10,7 @@ import { MenuSection } from "../menu/MenuSection";
 
 type FranchiseOverviewProps = {
   branches: Branch[];
+  inquiryRoute?: string;
   menuSections: MenuSectionData[];
   offer: FranchiseOffer;
   vertical: FranchiseType;
@@ -17,17 +18,20 @@ type FranchiseOverviewProps = {
 
 export function FranchiseOverview({
   branches,
+  inquiryRoute,
   menuSections,
   offer,
   vertical,
 }: FranchiseOverviewProps) {
   const verticalLabel = vertical === "hotel" ? "Hotel" : "Tea";
+  const resolvedInquiryRoute =
+    inquiryRoute ?? (vertical === "hotel" ? "/hotel-franchise-inquiry" : "/tea-franchise-inquiry");
 
   return (
     <>
       <PageHero
         actions={[
-          { label: "Start Franchise Inquiry", to: "/franchise-inquiry" },
+          { label: "Start Franchise Inquiry", to: resolvedInquiryRoute },
           { label: "View Menu", to: "/menu", variant: "secondary" },
         ]}
         chips={offer.highlights}
@@ -160,7 +164,7 @@ export function FranchiseOverview({
                   Budget, area, catchment, ani rollout timeline share kara. Team next step suggest karel.
                 </p>
               </div>
-              <CTAButton className="w-full sm:w-auto" to="/franchise-inquiry">
+              <CTAButton className="w-full sm:w-auto" to={resolvedInquiryRoute}>
                 Book Franchise Discussion
               </CTAButton>
             </div>

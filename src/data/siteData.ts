@@ -1,3 +1,6 @@
+import { hotelBranches as hotelBranchesData } from "./hotelBranches.js";
+import { teaBranches as teaBranchesData } from "./teaBranches.js";
+
 export type FranchiseType = "hotel" | "tea";
 
 export type NavigationLink = {
@@ -22,6 +25,8 @@ export type Branch = {
   city: string;
   locality: string;
   address: string;
+  phone: string;
+  mapLink: string;
   timings: string;
   format: string;
   specialty: string;
@@ -64,6 +69,47 @@ export type FranchiseOffer = {
   support: string[];
   formats: string[];
   audience: string[];
+};
+
+export type HomeVerticalCard = {
+  id: FranchiseType;
+  title: string;
+  description: string;
+  image: string;
+  ctaLabel: string;
+  to: string;
+  highlights: string[];
+};
+
+export type HomeBenefit = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type FeaturedShowcaseItem = {
+  id: string;
+  name: string;
+  category: "Food" | "Tea";
+  description: string;
+  price: string;
+  image: string;
+};
+
+export type SocialProofPlaceholder = {
+  title: string;
+  description: string;
+  reels: string[];
+};
+
+export type FranchiseInquiryOption = {
+  id: FranchiseType;
+  title: string;
+  description: string;
+  highlights: string[];
+  image: string;
+  to: string;
+  buttonLabel: string;
 };
 
 export const navigationLinks: NavigationLink[] = [
@@ -109,6 +155,147 @@ export const homeStats: Stat[] = [
   { label: "Daily guest touchpoints", value: "4.8K" },
 ];
 
+export const homeVerticalCards: HomeVerticalCard[] = [
+  {
+    id: "hotel",
+    title: "Hotel Franchise",
+    description:
+      "Biryani, thali, family restaurant experience, ani multiple branches sathi ready premium hospitality format.",
+    image:
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    ctaLabel: "Explore Hotel Franchise",
+    to: "/hotel-franchise",
+    highlights: ["Biryani", "Family Dining", "Multiple Branches"],
+  },
+  {
+    id: "tea",
+    title: "Tea Franchise",
+    description:
+      "Tea outlet model with low investment, quick setup, and strong daily footfall for repeat local business.",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    ctaLabel: "Explore Tea Franchise",
+    to: "/tea-franchise",
+    highlights: ["Low Investment", "Quick Setup", "Daily Footfall"],
+  },
+];
+
+export const homeBenefits: HomeBenefit[] = [
+  {
+    id: "regional-brand",
+    title: "Strong regional brand",
+    description:
+      "Marathi market connect mule brand la local recall ani authentic positioning milte.",
+  },
+  {
+    id: "multiple-branches",
+    title: "Multiple branches",
+    description:
+      "Existing multi-branch story investor confidence build karte ani expansion more believable banavate.",
+  },
+  {
+    id: "franchise-ready",
+    title: "Franchise-ready model",
+    description:
+      "Format, SOP thinking, and dummy lead flow he sagle future franchise scaling sathi base tayar kartat.",
+  },
+  {
+    id: "customer-trust",
+    title: "Marathi customer trust",
+    description:
+      "Language, food familiarity, ani grounded service tone mule customer trust naturally build hoto.",
+  },
+];
+
+export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
+  {
+    id: "featured-biryani",
+    name: "Chicken Biryani",
+    category: "Food",
+    description: "A rich dum-style hero dish built for family orders and strong delivery demand.",
+    price: "INR 365",
+    image:
+      "https://images.unsplash.com/photo-1701579231373-4294197a8940?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "featured-thali",
+    name: "Special Chicken Thali",
+    category: "Food",
+    description: "Comfort-heavy Maharashtrian plate with premium presentation and repeat appeal.",
+    price: "INR 390",
+    image:
+      "https://images.unsplash.com/photo-1613292443284-8d10ef9383fe?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "featured-tandoori",
+    name: "Tandoori Leg Piece",
+    category: "Food",
+    description: "A smoky signature starter that gives the hotel menu a strong visual hook.",
+    price: "INR 275",
+    image:
+      "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "featured-special-chaha",
+    name: "Special Chaha",
+    category: "Tea",
+    description: "A kadak daily repeat cup designed for quick service and local habit-building.",
+    price: "INR 25",
+    image:
+      "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "featured-basundi-chaha",
+    name: "Basundi Chaha",
+    category: "Tea",
+    description: "A sweeter premium tea concept that adds signature recall to the beverage line.",
+    price: "INR 55",
+    image:
+      "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "featured-coffee",
+    name: "Coffee",
+    category: "Tea",
+    description: "A familiar add-on beverage that supports broader daily footfall and snack pairing.",
+    price: "INR 60",
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+export const homeSocialProof: SocialProofPlaceholder = {
+  title: "Latest Reels Coming Soon",
+  description:
+    "Instagram reels placeholder for branch openings, food shots, customer moments, ani brand buzz.",
+  reels: ["Branch Opening Reel", "Signature Food Reel", "Tea Counter Reel"],
+};
+
+export const franchiseInquiryOptions: FranchiseInquiryOption[] = [
+  {
+    id: "hotel",
+    title: "Hotel Franchise",
+    description:
+      "Bigger restaurant business with biryani, thali, and family restaurant concept across Maharashtra-style food demand.",
+    highlights: ["Bigger restaurant business", "Biryani & Thali", "Family restaurant concept"],
+    image:
+      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+    to: "/hotel-franchise-inquiry",
+    buttonLabel: "Apply for Hotel Franchise",
+  },
+  {
+    id: "tea",
+    title: "Tea Franchise",
+    description:
+      "Low investment tea outlet business with daily footfall, quick setup, and repeat local customer potential.",
+    highlights: ["Low investment", "Daily footfall", "Quick setup"],
+    image:
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    to: "/tea-franchise-inquiry",
+    buttonLabel: "Apply for Tea Franchise",
+  },
+];
+
 export const aboutPillars: FeatureCard[] = [
   {
     title: "Marathi warmth, modern polish",
@@ -150,95 +337,263 @@ export const partnerJourney = [
   },
 ];
 
-export const hotelBranches: Branch[] = [
+export const hotelConceptPoints: FeatureCard[] = [
   {
-    id: "hotel-pune",
-    vertical: "hotel",
-    name: "Matoshree Signature Dining",
-    city: "Pune",
-    locality: "Balewadi",
-    address: "Near High Street Circle, Balewadi, Pune",
-    timings: "11:00 AM to 11:30 PM",
-    format: "Flagship dine-in + delivery",
-    specialty: "Kolhapuri thali, tandoor platters, family dining",
-    note: "Evening family dining and corporate lunch crowd give this store strong average billing.",
-    image:
-      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+    title: "Family restaurant model",
+    description:
+      "Hotel Matoshree is positioned as a warm family dining format that works for lunch, dinner, and group occasions.",
   },
   {
-    id: "hotel-nashik",
-    vertical: "hotel",
-    name: "Matoshree Highway Feast",
-    city: "Nashik",
-    locality: "Mumbai Naka",
-    address: "Service Road, Mumbai Naka, Nashik",
-    timings: "10:30 AM to 11:00 PM",
-    format: "High street family restaurant",
-    specialty: "Traveller buffet and combo meals",
-    note: "Highway movement creates strong weekend volume and consistent family group orders.",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    title: "Veg + Non-Veg food",
+    description:
+      "Menu mix keeps the outlet relevant for wider customer groups and helps tables convert across different food preferences.",
   },
   {
-    id: "hotel-kolhapur",
-    vertical: "hotel",
-    name: "Matoshree Spice Courtyard",
-    city: "Kolhapur",
-    locality: "Shahupuri",
-    address: "2nd Lane, Shahupuri, Kolhapur",
-    timings: "11:30 AM to 11:30 PM",
-    format: "City centre premium casual",
-    specialty: "Spice-forward gravies and weekend live counter",
-    note: "The menu gives a local yet premium identity, which helps brand memory stay sharp.",
-    image:
-      "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80",
+    title: "Biryani and thali focused brand",
+    description:
+      "Biryani, thali, and hearty regional plates give the brand a strong signature story that is easy to market.",
+  },
+  {
+    title: "Multiple branches across Maharashtra",
+    description:
+      "The multi-branch dummy presence helps communicate proof, regional scale, and stronger investor confidence.",
   },
 ];
 
-export const teaBranches: Branch[] = [
+export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
   {
-    id: "tea-pune",
-    vertical: "tea",
-    name: "Matoshree Chai Studio",
-    city: "Pune",
-    locality: "Kothrud",
-    address: "Paud Road Corner, Kothrud, Pune",
-    timings: "7:00 AM to 11:00 PM",
-    format: "Kiosk + standing cafe",
-    specialty: "Kesar chai, bun maska, office break adda",
-    note: "Morning commuter traffic keeps cup rotation high and snack add-ons moving.",
+    id: "hotel-dish-biryani",
+    name: "Chicken Dum Biryani",
+    category: "Food",
+    description: "Rich dum-style biryani built as a high-demand hero product for both dine-in and delivery.",
+    price: "INR 365",
+    image:
+      "https://images.unsplash.com/photo-1701579231373-4294197a8940?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "hotel-dish-chicken-thali",
+    name: "Special Chicken Thali",
+    category: "Food",
+    description: "A comfort-led signature thali that supports the Marathi family dining identity of the brand.",
+    price: "INR 390",
+    image:
+      "https://images.unsplash.com/photo-1613292443284-8d10ef9383fe?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "hotel-dish-tandoori-thali",
+    name: "Tandoori Leg Piece Thali",
+    category: "Food",
+    description: "A visually strong combo dish that blends tandoori appeal with a satisfying full-meal format.",
+    price: "INR 425",
+    image:
+      "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "hotel-dish-veg-thali",
+    name: "Veg Thali",
+    category: "Food",
+    description: "A reliable vegetarian mainstay that broadens family appeal and lunch-time repeat business.",
+    price: "INR 240",
+    image:
+      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "hotel-dish-mutton-thali",
+    name: "Mutton Thali",
+    category: "Food",
+    description: "A premium regional favorite that helps the menu feel indulgent, rooted, and occasion-worthy.",
+    price: "INR 520",
+    image:
+      "https://images.unsplash.com/photo-1604908554165-e710f4f28b2d?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "hotel-dish-family-combos",
+    name: "Family Combos",
+    category: "Food",
+    description: "Group-friendly combo meals designed to improve average billing and make ordering easier for families.",
+    price: "INR 899",
+    image:
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+export const hotelFranchiseBenefits: FeatureCard[] = [
+  {
+    title: "Established regional brand",
+    description:
+      "Matoshree carries a Maharashtra-focused identity that helps the brand feel familiar and trustworthy from day one.",
+  },
+  {
+    title: "Ready food concept",
+    description:
+      "The dining proposition is already clear: biryani, thali, family restaurant energy, and strong meal-led positioning.",
+  },
+  {
+    title: "Marketing support",
+    description:
+      "Launch communication, local awareness, and promotional guidance help the branch start with stronger visibility.",
+  },
+  {
+    title: "Menu guidance",
+    description:
+      "Signature items, mix balance, and product emphasis can be guided so the outlet stays aligned with the brand story.",
+  },
+  {
+    title: "Branch launch support",
+    description:
+      "Pre-opening readiness, on-ground setup thinking, and rollout structure reduce friction during launch stage.",
+  },
+  {
+    title: "Social media support",
+    description:
+      "Visual-first content support gives the franchise a better presence across local food discovery and social channels.",
+  },
+];
+
+export const hotelIdealLocations = [
+  "Main road",
+  "Market area",
+  "Highway",
+  "College area",
+  "Family crowd location",
+];
+
+export const hotelInvestmentPlaceholder =
+  "Final investment details will be shared after discussion.";
+
+export const teaConceptPoints: FeatureCard[] = [
+  {
+    title: "Tea outlet model",
+    description:
+      "Matoshree Tea is designed as a compact, premium tea-first outlet format that can fit multiple daily demand zones.",
+  },
+  {
+    title: "Daily repeat customers",
+    description:
+      "Tea as a habit category means repeat cups, regular local traffic, and a stronger everyday sales rhythm.",
+  },
+  {
+    title: "Small space business",
+    description:
+      "The format works in tighter footprints, which keeps setup lighter and helps new investors enter more confidently.",
+  },
+  {
+    title: "Quick setup",
+    description:
+      "Compared to larger food outlets, the tea format can be prepared and launched faster with simpler operations.",
+  },
+  {
+    title: "Flexible catchments",
+    description:
+      "Suitable for city roads, highway points, market zones, and college-led traffic pockets across Maharashtra.",
+  },
+];
+
+export const teaSignatureProducts: FeaturedShowcaseItem[] = [
+  {
+    id: "tea-product-special-chaha",
+    name: "Special Chaha",
+    category: "Tea",
+    description: "A signature daily cup with familiar taste and repeat-order potential for local traffic.",
+    price: "INR 25",
+    image:
+      "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "tea-product-masala-chaha",
+    name: "Masala Chaha",
+    category: "Tea",
+    description: "A spice-led tea option that strengthens the outlet's rooted, all-day beverage appeal.",
+    price: "INR 30",
+    image:
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "tea-product-basundi-chaha",
+    name: "Basundi Chaha",
+    category: "Tea",
+    description: "A richer premium cup that helps the tea menu feel distinct, warm, and memorable.",
+    price: "INR 55",
+    image:
+      "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: "tea-product-coffee",
+    name: "Coffee",
+    category: "Tea",
+    description: "A familiar secondary beverage that widens customer choice without overcomplicating the counter.",
+    price: "INR 60",
     image:
       "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "tea-aurangabad",
-    vertical: "tea",
-    name: "Matoshree Tapri Royale",
-    city: "Chhatrapati Sambhajinagar",
-    locality: "CIDCO",
-    address: "Town Center, CIDCO, Chhatrapati Sambhajinagar",
-    timings: "7:30 AM to 10:30 PM",
-    format: "Compact lounge format",
-    specialty: "Cutting chai, toasties, youth hangout",
-    note: "Low capex and repeat orders make this format appealing for first-time operators.",
+    id: "tea-product-cold-coffee",
+    name: "Cold Coffee",
+    category: "Tea",
+    description: "A youth-friendly cold option that supports warmer weather demand and premium add-on sales.",
+    price: "INR 95",
     image:
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "tea-thane",
-    vertical: "tea",
-    name: "Matoshree Brew Station",
-    city: "Thane",
-    locality: "Hiranandani Estate",
-    address: "Boulevard Plaza, Hiranandani Estate, Thane",
-    timings: "8:00 AM to 11:00 PM",
-    format: "Mall-adjacent cafe kiosk",
-    specialty: "Cold chai coolers and premium snack pairings",
-    note: "Young professionals drive high evening pick-up volume and premium cup trials.",
+    id: "tea-product-snacks-combo",
+    name: "Snacks Combo",
+    category: "Tea",
+    description: "Easy tea pairings improve ticket size and make the outlet more useful for regular short breaks.",
+    price: "INR 89",
     image:
-      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80",
   },
 ];
+
+export const teaFranchiseBenefits: FeatureCard[] = [
+  {
+    title: "Low investment model",
+    description:
+      "Smaller setup requirements make the tea format more approachable for small and medium investors.",
+  },
+  {
+    title: "Daily footfall",
+    description:
+      "Tea habit traffic can create stable all-day visits from commuters, students, shoppers, and office-goers.",
+  },
+  {
+    title: "Easy operations",
+    description:
+      "Lean product flow and simpler counter rhythm help the outlet operate with lower complexity than full restaurants.",
+  },
+  {
+    title: "Fast setup",
+    description:
+      "Compact format and lighter requirements make rollout faster for founders looking to move quickly.",
+  },
+  {
+    title: "Repeat customers",
+    description:
+      "Chai-led business naturally encourages repeat daily usage, which supports predictable local demand.",
+  },
+  {
+    title: "Franchise support",
+    description:
+      "Setup guidance, product positioning, and launch direction can help the tea outlet open with more clarity.",
+  },
+];
+
+export const teaIdealLocations = [
+  "Highway",
+  "Bus stand",
+  "Market area",
+  "College area",
+  "Office area",
+  "Petrol pump nearby",
+];
+
+export const teaInvestmentPlaceholder =
+  "Tea franchise investment details will be shared after discussion.";
+
+export const hotelBranches: Branch[] = hotelBranchesData as Branch[];
+
+export const teaBranches: Branch[] = teaBranchesData as Branch[];
 
 export const hotelMenuSections: MenuSectionData[] = [
   {

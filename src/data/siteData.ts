@@ -6,6 +6,8 @@ export type FranchiseType = "hotel" | "tea";
 export type NavigationLink = {
   label: string;
   to: string;
+  isButton?: boolean;
+  children?: Omit<NavigationLink, 'children' | 'isButton'>[];
 };
 
 export type Stat = {
@@ -22,6 +24,8 @@ export type Branch = {
   id: string;
   vertical: FranchiseType;
   name: string;
+  managerName?: string;
+  tagline?: string;
   city: string;
   locality: string;
   address: string;
@@ -114,26 +118,32 @@ export type FranchiseInquiryOption = {
 
 export const navigationLinks: NavigationLink[] = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Hotel Franchise", to: "/hotel-franchise" },
-  { label: "Tea Franchise", to: "/tea-franchise" },
-  { label: "Branches", to: "/branches" },
+  { label: "About Us", to: "/about" },
   { label: "Menu", to: "/menu" },
+  { label: "Our Branches", to: "/branches" },
   { label: "Gallery", to: "/gallery" },
-  { label: "Franchise Inquiry", to: "/franchise-inquiry" },
+  {
+    label: "Franchises",
+    to: "#",
+    children: [
+      { label: "Hotel Franchise", to: "/hotel-franchise" },
+      { label: "Tea Franchise", to: "/tea-franchise" },
+    ],
+  },
   { label: "Contact", to: "/contact" },
+  { label: "Franchise Inquiry", to: "/franchise-inquiry", isButton: true },
 ];
 
 export const footerHotelLinks: NavigationLink[] = [
   { label: "Hotel Franchise Model", to: "/hotel-franchise" },
-  { label: "Hotel Menu Preview", to: "/menu" },
-  { label: "Hotel Branches", to: "/branches" },
+  { label: "Signature Menu", to: "/menu" },
+  { label: "Our Locations", to: "/branches" },
 ];
 
 export const footerTeaLinks: NavigationLink[] = [
   { label: "Tea Franchise Model", to: "/tea-franchise" },
-  { label: "Tea Gallery", to: "/gallery" },
-  { label: "Inquiry Form", to: "/franchise-inquiry" },
+  { label: "Brand Gallery", to: "/gallery" },
+  { label: "Partner With Us", to: "/franchise-inquiry" },
 ];
 
 export const contactInfo = {

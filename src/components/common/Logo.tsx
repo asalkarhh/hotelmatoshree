@@ -10,7 +10,15 @@ type LogoProps = {
 
 export function Logo({ className, compact = false, showTagline = true }: LogoProps) {
   return (
-    <Link className={cn("flex items-center gap-3", className)} to="/">
+    <Link
+      className={cn("flex items-center gap-3", className)}
+      onClick={() => {
+        if (window.location.pathname === "/") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }}
+      to="/"
+    >
       <img
         alt="Matoshree Group"
         className={compact ? "h-11 w-11 rounded-2xl" : "h-[52px] w-[52px] rounded-[22px]"}

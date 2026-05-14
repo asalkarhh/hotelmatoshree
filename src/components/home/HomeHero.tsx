@@ -9,16 +9,14 @@ export function HomeHero() {
   const teaCard = homeVerticalCards[1];
 
   return (
-    <section className="page-section pb-8">
-      <div className="section-shell">
+    <section className="relative w-screen left-1/2 -translate-x-1/2 flex flex-col justify-center min-h-screen bg-[linear-gradient(135deg,#2b120d_0%,#6f2519_44%,#d97927_100%)] !rounded-none !border-0 !shadow-none !max-w-none shrink-0 overflow-hidden !-mt-[69px] !pt-[69px] text-brand-cream">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(252,244,231,0.16),transparent_24%)] pointer-events-none" />
+      <div className="section-shell w-full px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 relative z-10">
         <motion.div
           animate="show"
-          className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(135deg,#2b120d_0%,#6f2519_44%,#d97927_100%)] px-6 py-8 text-brand-cream shadow-[0_30px_90px_rgba(76,30,19,0.28)] sm:px-8 sm:py-10 lg:px-10 lg:py-12"
           initial="hidden"
           variants={staggerContainer}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(252,244,231,0.16),transparent_24%)]" />
-
           <div className="relative grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr]">
             <div>
               <motion.span

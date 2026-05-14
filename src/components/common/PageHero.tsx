@@ -37,11 +37,10 @@ export function PageHero({
   title,
 }: PageHeroProps) {
   return (
-    <section className="page-section pb-8">
-      <div className="section-shell">
+    <section className="relative w-screen left-1/2 -translate-x-1/2 flex flex-col justify-center min-h-screen panel-card texture-wash !rounded-none !border-0 !shadow-none !max-w-none shrink-0 overflow-hidden !-mt-[69px] !pt-[69px]">
+      <div className="section-shell w-full px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <motion.div
           animate="show"
-          className="panel-card texture-wash overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12"
           initial="hidden"
           variants={staggerContainer}
         >

@@ -32,7 +32,7 @@ export function FranchiseOverview({
       <PageHero
         actions={[
           { label: "Start Franchise Inquiry", to: resolvedInquiryRoute },
-          { label: "View Menu", to: "/menu", variant: "secondary" },
+          { label: "View Menu", to: "/menu", variant: "primary" },
         ]}
         chips={offer.highlights}
         description={offer.description}
@@ -61,6 +61,7 @@ export function FranchiseOverview({
                 key={highlight}
                 transition={{ duration: 0.55 }}
                 viewport={viewport}
+                whileHover={{ y: -6 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <Sparkles className="h-8 w-8 text-brand-red" />

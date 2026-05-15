@@ -30,6 +30,7 @@ export function AboutPage() {
                 key={pillar.title}
                 transition={{ duration: 0.55 }}
                 viewport={viewport}
+                whileHover={{ y: -6 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <h3 className="text-xl font-semibold text-brand-deep">{pillar.title}</h3>
@@ -55,6 +56,7 @@ export function AboutPage() {
                 key={item.step}
                 transition={{ duration: 0.55 }}
                 viewport={viewport}
+                whileHover={{ y: -6 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">

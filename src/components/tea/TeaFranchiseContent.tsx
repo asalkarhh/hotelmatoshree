@@ -126,6 +126,7 @@ export function TeaFranchiseContent() {
                   key={point.title}
                   transition={{ duration: 0.55 }}
                   viewport={viewport}
+                  whileHover={{ y: -6 }}
                   whileInView={{ opacity: 1, y: 0 }}
                 >
                   <h3 className="text-lg font-semibold text-brand-deep">{point.title}</h3>
@@ -177,6 +178,7 @@ export function TeaFranchiseContent() {
                 key={benefit.title}
                 transition={{ duration: 0.55 }}
                 viewport={viewport}
+                whileHover={{ y: -6 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <TeaBenefitCard benefit={benefit} icon={benefitIcons[index]} />

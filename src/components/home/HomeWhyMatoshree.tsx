@@ -32,6 +32,7 @@ export function HomeWhyMatoshree() {
                 key={benefit.id}
                 transition={{ duration: 0.55 }}
                 viewport={viewport}
+                whileHover={{ y: -6 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <div className="inline-flex rounded-2xl bg-brand-red p-3 text-brand-cream">

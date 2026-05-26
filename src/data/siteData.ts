@@ -25,7 +25,6 @@ import imgVegThali from "../assets/new/Special_Thali.png";
 import imgMuttonThali from "../assets/new/Mutton.png";
 import imgMasalaChaha from "../assets/new/Tea-Banner.png";
 import imgColdCoffee from "../assets/new/Tea-Banner.png";
-import imgGallery1 from "../assets/new/Mainbranch_Poster.png";
 import imgGallery2 from "../assets/new/Screenshot 2026-05-25 152919.png";
 import imgGallery3 from "../assets/new/Owner.png";
 import imgGalleryOwner1 from "../assets/new/Owner1.png";
@@ -203,22 +202,49 @@ export const footerTeaLinks: NavigationLink[] = [
 ];
 
 export const contactInfo = {
-  brand: "Matoshree Group",
-  tagline: "Assal swad, garam atithya, ani smart franchise growth.",
-  phone: "+91 98765 43210",
-  whatsappNumber: "919876543210",
-  email: "hello@matoshreegroup.in",
-  address: "Balewadi High Street, Pune, Maharashtra",
-  mapLink: "https://maps.google.com/?q=Balewadi+High+Street+Pune",
-  hours: "Daily | 9:00 AM to 10:30 PM",
+  brand: "Hotel Dharashiv Che Matoshree",
+  tagline: "एकदा यायलाच लागत - धाराशिवचा अस्सल स्वाद आणि विश्वासार्ह फ्रेंचाईजी मॉडेल.",
+  owner: "प्रो. मनोज सुरवसे",
+  phone: "+91 91753 79695",
+  alternatePhones: ["+91 73705 03858", "+91 86682 50149", "+91 93595 29327"],
+  whatsappNumber: "919175379695",
+  email: "hello@hotelmatoshree.in",
+  address: "मुख्य शाखा: जिजाऊ चौक, बार्शी नाका, धाराशिव, महाराष्ट्र",
+  mapLink: "https://maps.google.com/?q=Jijau+Chowk+Barshi+Naka+Dharashiv+Maharashtra",
+  hours: "Daily | 8:00 AM to 11:00 PM",
   instagram: "https://instagram.com/matoshreegroup",
 };
 
 export const homeStats: Stat[] = [
-  { label: "Active outlets", value: "18+" },
-  { label: "Cities in play", value: "7" },
-  { label: "Launch support days", value: "45" },
-  { label: "Daily guest touchpoints", value: "4.8K" },
+  { label: "Main branch", value: "Dharashiv" },
+  { label: "Verticals", value: "Hotel + Tea" },
+  { label: "Franchise contacts", value: "3+" },
+  { label: "Brand promise", value: "Premium Local" },
+];
+
+export const brandInformationCards = [
+  {
+    title: "हॉटेल धाराशिव चे मातोश्री",
+    eyebrow: "मुख्य शाखा",
+    description:
+      "धाराशिव, महाराष्ट्र येथून सुरू झालेला Matoshree hospitality brand - veg, non-veg, बिर्याणी, थाळी आणि चहा फ्रेंचाईजीसाठी premium local positioning.",
+    points: [
+      "मुख्य शाखा: जिजाऊ चौक, बार्शी नाका, धाराशिव",
+      "प्रो. मनोज सुरवसे यांच्या मार्गदर्शनाखाली brand operations",
+      "हॉटेल मातोश्री चहावाला आणि मातोश्री बिर्याणी हे दोन स्पष्ट franchise formats",
+    ],
+  },
+  {
+    title: "हॉटेल मातोश्री चहावाला",
+    eyebrow: "Tea Franchise",
+    description:
+      "चहा, वडापाव, भजे, पोहे आणि breakfast-focused compact outlet model. जुने हॉटेल असल्यास location आणि look चांगला असेल तर franchise discussion करता येईल.",
+    points: [
+      "फक्त चहा setup अंदाजे दीड लाखापासून सुरू होऊ शकतो",
+      "चहा + वडापाव setup साठी अंदाजे दोन लाखांच्या जवळपास खर्च लागू शकतो",
+      "Setup cost मध्ये POP, जागेचा advance deposit इत्यादी वेगळे असू शकतात",
+    ],
+  },
 ];
 
 export const homeVerticalCards: HomeVerticalCard[] = [
@@ -227,7 +253,7 @@ export const homeVerticalCards: HomeVerticalCard[] = [
     title: "Hotel Franchise",
     description:
       "Biryani, thali, family restaurant experience, ani multiple branches sathi ready premium hospitality format.",
-    image: imgGallery1,
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85",
     ctaLabel: "Explore Hotel Franchise",
     to: "/hotel-franchise",
     highlights: ["Biryani", "Family Dining", "Multiple Branches"],
@@ -237,7 +263,7 @@ export const homeVerticalCards: HomeVerticalCard[] = [
     title: "Tea Franchise",
     description:
       "Tea outlet model with low investment, quick setup, and strong daily footfall for repeat local business.",
-    image: imgSpecialChaha,
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85",
     ctaLabel: "Explore Tea Franchise",
     to: "/tea-franchise",
     highlights: ["Low Investment", "Quick Setup", "Daily Footfall"],
@@ -336,7 +362,7 @@ export const franchiseInquiryOptions: FranchiseInquiryOption[] = [
     description:
       "Bigger restaurant business with biryani, thali, and family restaurant concept across Maharashtra-style food demand.",
     highlights: ["Bigger restaurant business", "Biryani & Thali", "Family restaurant concept"],
-    image: imgHotelInquiry,
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85",
     to: "/hotel-franchise-inquiry",
     buttonLabel: "Apply for Hotel Franchise",
     documents: [
@@ -381,7 +407,7 @@ export const franchiseInquiryOptions: FranchiseInquiryOption[] = [
     description:
       "Low investment tea outlet business with daily footfall, quick setup, and repeat local customer potential.",
     highlights: ["Low investment", "Daily footfall", "Quick setup"],
-    image: imgTeaInquiry,
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85",
     to: "/tea-franchise-inquiry",
     buttonLabel: "Apply for Tea Franchise",
     documents: [
@@ -573,7 +599,7 @@ export const hotelIdealLocations = [
 ];
 
 export const hotelInvestmentPlaceholder =
-  "Final investment details will be shared after discussion.";
+  "Hotel franchise investment, setup, staff, kitchen, location, and agreement terms will be discussed after document review and partner call.";
 
 export const teaConceptPoints: FeatureCard[] = [
   {
@@ -697,7 +723,7 @@ export const teaIdealLocations = [
 ];
 
 export const teaInvestmentPlaceholder =
-  "Tea franchise investment details will be shared after discussion.";
+  "Tea setup can start from a compact chaha model, while chaha + vadapav/breakfast format may need higher setup cost depending on location and interiors.";
 
 export const hotelBranches: Branch[] = hotelBranchesData as Branch[];
 

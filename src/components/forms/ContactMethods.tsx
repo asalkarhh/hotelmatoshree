@@ -5,7 +5,7 @@ import { buildWhatsAppLink } from "../../utils/whatsapp";
 const contactCards = [
   {
     label: "Phone",
-    value: contactInfo.phone,
+    value: `${contactInfo.phone} / ${contactInfo.alternatePhones[0]}`,
     href: `tel:${contactInfo.phone.replaceAll(" ", "")}`,
     icon: PhoneCall,
   },
@@ -56,7 +56,11 @@ export function ContactMethods() {
               Office Address
             </p>
             <p className="mt-2 text-lg font-semibold text-brand-deep">{contactInfo.address}</p>
-            <p className="body-copy mt-3">Working hours: {contactInfo.hours}</p>
+            <p className="body-copy mt-3">Owner: {contactInfo.owner}</p>
+            <p className="body-copy mt-2">Working hours: {contactInfo.hours}</p>
+            <p className="body-copy mt-2">
+              Other contacts: {contactInfo.alternatePhones.join(", ")}
+            </p>
           </div>
         </div>
       </div>

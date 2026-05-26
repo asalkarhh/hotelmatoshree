@@ -1,4 +1,4 @@
-import { Building2, CupSoda, Eye, FileText } from "lucide-react";
+import { Eye, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { FranchiseInquiryOption } from "../../data/siteData";
@@ -9,14 +9,7 @@ type InquiryOptionCardProps = {
   option: FranchiseInquiryOption;
 };
 
-const iconMap = {
-  hotel: Building2,
-  tea: CupSoda,
-};
-
 export function InquiryOptionCard({ option }: InquiryOptionCardProps) {
-  const Icon = iconMap[option.id];
-
   return (
     <motion.article
       className="group panel-card overflow-hidden"
@@ -34,10 +27,6 @@ export function InquiryOptionCard({ option }: InquiryOptionCardProps) {
           src={option.image}
         />
         <div className="image-overlay absolute inset-0" />
-        <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-cream">
-          <Icon className="h-4 w-4" />
-          {option.title}
-        </div>
       </div>
 
       <div className="p-6 sm:p-7">

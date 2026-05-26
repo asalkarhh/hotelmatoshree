@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoMark from "../../assets/logos/matoshree-mark.svg";
+import logoMark from "../../assets/new/Dam_Biryani_Logo.png";
 import { cn } from "../../utils/cn";
 
 type LogoProps = {
@@ -21,7 +21,11 @@ export function Logo({ className, compact = false, showTagline = true }: LogoPro
     >
       <img
         alt="Matoshree Group"
-        className={compact ? "h-11 w-11 rounded-2xl" : "h-[52px] w-[52px] rounded-[22px]"}
+        className={
+          compact
+            ? "h-12 w-12 rounded-2xl bg-white object-contain p-1.5"
+            : "h-14 w-14 rounded-[22px] bg-white object-contain p-1.5"
+        }
         src={logoMark}
       />
       <div className="min-w-0">

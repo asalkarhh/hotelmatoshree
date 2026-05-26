@@ -12,7 +12,7 @@ export function ContactPage() {
           { label: "Channels", value: "4+" },
           { label: "Response route", value: "Call / Mail / WA" },
           { label: "Verticals", value: "Hotel + Tea" },
-          { label: "Content", value: "Dummy details" },
+          { label: "Main branch", value: "Dharashiv" },
         ]}
         title="Talk to the Matoshree team through the channel that suits you."
       />
@@ -31,7 +31,7 @@ export function ContactPage() {
               <div className="soft-card p-5">
                 <h3 className="text-lg font-semibold text-brand-deep">Hotel Franchise</h3>
                 <p className="body-copy mt-3">
-                  Family dining and premium hospitality model sathi dedicated page ready aahe.
+                  Biryani, thali, veg-nonveg dining आणि family restaurant model साठी dedicated page ready आहे.
                 </p>
                 <CTAButton className="mt-5" to="/hotel-franchise" variant="secondary">
                   Explore Hotel Model
@@ -41,7 +41,7 @@ export function ContactPage() {
               <div className="soft-card p-5">
                 <h3 className="text-lg font-semibold text-brand-deep">Tea Franchise</h3>
                 <p className="body-copy mt-3">
-                  Repeat cup business and compact capex format cha page pan ready aahe.
+                  Chaha, vadapav, pohe आणि compact breakfast outlet model साठी details पाहू शकता.
                 </p>
                 <CTAButton className="mt-5" to="/tea-franchise" variant="secondary">
                   Explore Tea Model
@@ -51,7 +51,7 @@ export function ContactPage() {
               <div className="soft-card p-5">
                 <h3 className="text-lg font-semibold text-brand-deep">Franchise Inquiry</h3>
                 <p className="body-copy mt-3">
-                  Dummy lead capture sathi WhatsApp-based frontend flow already wired aahe.
+                  Requirement, rules आणि agreement documents पाहून direct inquiry submit करा.
                 </p>
                 <CTAButton className="mt-5" to="/franchise-inquiry">
                   Open Inquiry Flow

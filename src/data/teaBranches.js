@@ -12,8 +12,7 @@ export const teaBranches = [
     format: "Kiosk + standing cafe",
     specialty: "Kesar chai, bun maska, office break adda",
     note: "Morning commuter traffic keeps cup rotation high and snack add-ons moving.",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: "tea-aurangabad",
@@ -28,8 +27,7 @@ export const teaBranches = [
     format: "Compact lounge format",
     specialty: "Cutting chai, toasties, youth hangout",
     note: "Low capex and repeat orders make this format appealing for first-time operators.",
-    image:
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: "tea-thane",
@@ -44,7 +42,6 @@ export const teaBranches = [
     format: "Mall-adjacent cafe kiosk",
     specialty: "Cold chai coolers and premium snack pairings",
     note: "Young professionals drive high evening pick-up volume and premium cup trials.",
-    image:
-      "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=85",
   },
 ];

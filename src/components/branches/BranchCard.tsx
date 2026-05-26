@@ -1,6 +1,6 @@
 import { Clock3, MapPin, Phone, Store, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { contactInfo, type Branch } from "../../data/siteData";
+import type { Branch } from "../../data/siteData";
 import { viewport } from "../../utils/motion";
 import { buildWhatsAppLink } from "../../utils/whatsapp";
 import { CTAButton } from "../common/CTAButton";

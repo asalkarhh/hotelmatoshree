@@ -9,8 +9,15 @@ export function AppLayout() {
   const location = useLocation();
 
   useEffect(() => {
+    if (location.hash) {
+      requestAnimationFrame(() => {
+        document.querySelector(location.hash)?.scrollIntoView({ block: "start" });
+      });
+      return;
+    }
+
     window.scrollTo({ top: 0, left: 0 });
-  }, [location.pathname]);
+  }, [location.hash, location.pathname]);
 
   return (
     <div className="relative min-h-screen flex flex-col">

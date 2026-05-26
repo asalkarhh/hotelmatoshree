@@ -18,7 +18,7 @@ export function FranchiseInquiryPage() {
         title="Choose the Matoshree franchise path you want to apply for."
       />
 
-      <section className="page-section pt-4">
+      <section className="page-section scroll-mt-28 pt-4" id="franchise-documents">
         <div className="section-shell">
           <div className="grid gap-6 xl:grid-cols-2">
             {franchiseInquiryOptions.map((option) => (

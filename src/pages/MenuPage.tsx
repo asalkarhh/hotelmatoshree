@@ -1,5 +1,6 @@
-import { hotelMenuSections, teaMenuSections } from "../data/siteData";
+import { hotelMenuSections, menuImageCollections, teaMenuSections } from "../data/siteData";
 import { PageHero } from "../components/common/PageHero";
+import { MenuImageViewer } from "../components/menu/MenuImageViewer";
 import { MenuSection } from "../components/menu/MenuSection";
 
 export function MenuPage() {
@@ -28,6 +29,7 @@ export function MenuPage() {
         sections={teaMenuSections}
         title="Tea franchise menu blocks"
       />
+      <MenuImageViewer collections={menuImageCollections} />
     </>
   );
 }

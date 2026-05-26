@@ -12,8 +12,7 @@ export const hotelBranches = [
     format: "Flagship dine-in + delivery",
     specialty: "Kolhapuri thali, tandoor platters, family dining",
     note: "Evening family dining and corporate lunch crowd give this store strong average billing.",
-    image:
-      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: "hotel-nashik",
@@ -28,8 +27,7 @@ export const hotelBranches = [
     format: "High street family restaurant",
     specialty: "Traveller buffet and combo meals",
     note: "Highway movement creates strong weekend volume and consistent family group orders.",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: "hotel-kolhapur",
@@ -44,7 +42,6 @@ export const hotelBranches = [
     format: "City centre premium casual",
     specialty: "Spice-forward gravies and weekend live counter",
     note: "The menu gives a local yet premium identity, which helps brand memory stay sharp.",
-    image:
-      "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85",
   },
 ];

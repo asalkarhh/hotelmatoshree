@@ -1,6 +1,37 @@
 import { hotelBranches as hotelBranchesData } from "./hotelBranches.js";
 import { teaBranches as teaBranchesData } from "./teaBranches.js";
 
+import imgBiryani from "../assets/new/Special_Biryani.png";
+import imgSpecialChickenThali from "../assets/new/Special_Chicken.png";
+import imgTandoori from "../assets/new/Chicken.png";
+import imgSpecialChaha from "../assets/new/Tea-Banner.png";
+import imgBasundiChaha from "../assets/new/Tea-Banner.png";
+import imgCoffee from "../assets/new/Tea-Banner.png";
+import imgHotelInquiry from "../assets/new/Franchieses_Req.jpg";
+import imgTeaInquiry from "../assets/new/Franchieses_Tea_Requirement.jpg";
+import imgHotelRequirement1 from "../assets/new/Franchieses_Requirement1.jpg";
+import imgHotelRequirement2 from "../assets/new/Franchieses_Requirement2.jpg";
+import imgHotelRequirement3 from "../assets/new/Franchieses_Requirement3.jpg";
+import imgHotelRequirement4 from "../assets/new/Franchieses_Requirement4.jpg";
+import imgHotelRules from "../assets/new/Franchieses_rules.jpg";
+import imgHotelRules2 from "../assets/new/Franchieses_rules2.jpg";
+import imgAgreement from "../assets/new/Aggriment.png";
+import imgAgreement2 from "../assets/new/Frenchieses_aggriment.jpg";
+import imgAgreement3 from "../assets/new/Frenchieses_aggriment2.jpg";
+import imgAgreement4 from "../assets/new/Frenchieses_aggriment3.jpg";
+import imgDamBiryaniLogo from "../assets/new/Dam_Biryani_Logo.png";
+import imgDhavaraSpecial from "../assets/new/Dhavara_Special.png";
+import imgVegThali from "../assets/new/Special_Thali.png";
+import imgMuttonThali from "../assets/new/Mutton.png";
+import imgMasalaChaha from "../assets/new/Tea-Banner.png";
+import imgColdCoffee from "../assets/new/Tea-Banner.png";
+import imgGallery1 from "../assets/new/Mainbranch_Poster.png";
+import imgGallery2 from "../assets/new/Screenshot 2026-05-25 152919.png";
+import imgGallery3 from "../assets/new/Owner.png";
+import imgGalleryOwner1 from "../assets/new/Owner1.png";
+import imgGalleryBanner from "../assets/new/Banner.png";
+import imgGalleryDish from "../assets/new/Dish.png";
+
 export type FranchiseType = "hotel" | "tea";
 
 export type NavigationLink = {
@@ -54,12 +85,26 @@ export type MenuSectionData = {
   items: MenuItem[];
 };
 
+export type MenuImageCollection = {
+  id: string;
+  vertical: FranchiseType;
+  title: string;
+  description: string;
+  images: MenuImage[];
+};
+
+export type MenuImage = {
+  label: string;
+  image: string;
+};
+
 export type GalleryItem = {
   id: string;
   label: string;
   title: string;
   caption: string;
   image: string;
+  layout?: "strip" | "card";
 };
 
 export type FranchiseOffer = {
@@ -114,6 +159,17 @@ export type FranchiseInquiryOption = {
   image: string;
   to: string;
   buttonLabel: string;
+  documents: FranchiseDocument[];
+};
+
+export type FranchiseDocument = {
+  id: string;
+  label: string;
+  description: string;
+  previewImage: string;
+  pageImages: string[];
+  viewUrl: string;
+  downloadUrl: string;
 };
 
 export const navigationLinks: NavigationLink[] = [
@@ -171,8 +227,7 @@ export const homeVerticalCards: HomeVerticalCard[] = [
     title: "Hotel Franchise",
     description:
       "Biryani, thali, family restaurant experience, ani multiple branches sathi ready premium hospitality format.",
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    image: imgGallery1,
     ctaLabel: "Explore Hotel Franchise",
     to: "/hotel-franchise",
     highlights: ["Biryani", "Family Dining", "Multiple Branches"],
@@ -182,8 +237,7 @@ export const homeVerticalCards: HomeVerticalCard[] = [
     title: "Tea Franchise",
     description:
       "Tea outlet model with low investment, quick setup, and strong daily footfall for repeat local business.",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: imgSpecialChaha,
     ctaLabel: "Explore Tea Franchise",
     to: "/tea-franchise",
     highlights: ["Low Investment", "Quick Setup", "Daily Footfall"],
@@ -224,8 +278,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A rich dum-style hero dish built for family orders and strong delivery demand.",
     price: "INR 365",
-    image:
-      "https://images.unsplash.com/photo-1701579231373-4294197a8940?auto=format&fit=crop&w=1200&q=80",
+    image: imgBiryani,
   },
   {
     id: "featured-thali",
@@ -233,8 +286,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "Comfort-heavy Maharashtrian plate with premium presentation and repeat appeal.",
     price: "INR 390",
-    image:
-      "https://images.unsplash.com/photo-1613292443284-8d10ef9383fe?auto=format&fit=crop&w=1200&q=80",
+    image: imgSpecialChickenThali,
   },
   {
     id: "featured-tandoori",
@@ -242,8 +294,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A smoky signature starter that gives the hotel menu a strong visual hook.",
     price: "INR 275",
-    image:
-      "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=80",
+    image: imgTandoori,
   },
   {
     id: "featured-special-chaha",
@@ -251,8 +302,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A kadak daily repeat cup designed for quick service and local habit-building.",
     price: "INR 25",
-    image:
-      "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1200&q=80",
+    image: imgSpecialChaha,
   },
   {
     id: "featured-basundi-chaha",
@@ -260,8 +310,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A sweeter premium tea concept that adds signature recall to the beverage line.",
     price: "INR 55",
-    image:
-      "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=1200&q=80",
+    image: imgBasundiChaha,
   },
   {
     id: "featured-coffee",
@@ -269,8 +318,7 @@ export const featuredShowcaseItems: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A familiar add-on beverage that supports broader daily footfall and snack pairing.",
     price: "INR 60",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: imgCoffee,
   },
 ];
 
@@ -288,10 +336,44 @@ export const franchiseInquiryOptions: FranchiseInquiryOption[] = [
     description:
       "Bigger restaurant business with biryani, thali, and family restaurant concept across Maharashtra-style food demand.",
     highlights: ["Bigger restaurant business", "Biryani & Thali", "Family restaurant concept"],
-    image:
-      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80",
+    image: imgHotelInquiry,
     to: "/hotel-franchise-inquiry",
     buttonLabel: "Apply for Hotel Franchise",
+    documents: [
+      {
+        id: "requirements",
+        label: "Requirement PDF",
+        description: "Space, setup, and franchise requirement pages.",
+        previewImage: imgHotelInquiry,
+        pageImages: [
+          imgHotelInquiry,
+          imgHotelRequirement1,
+          imgHotelRequirement2,
+          imgHotelRequirement3,
+          imgHotelRequirement4,
+        ],
+        viewUrl: "/assets/docs/hotel-franchise-requirements.pdf",
+        downloadUrl: "/assets/docs/hotel-franchise-requirements.pdf",
+      },
+      {
+        id: "rules",
+        label: "Rules PDF",
+        description: "Operating rules and partner guidelines.",
+        previewImage: imgHotelRules,
+        pageImages: [imgHotelRules, imgHotelRules2],
+        viewUrl: "/assets/docs/hotel-franchise-rules.pdf",
+        downloadUrl: "/assets/docs/hotel-franchise-rules.pdf",
+      },
+      {
+        id: "agreement",
+        label: "Agreement PDF",
+        description: "Franchise agreement reference document.",
+        previewImage: imgAgreement,
+        pageImages: [imgAgreement, imgAgreement2, imgAgreement3, imgAgreement4],
+        viewUrl: "/assets/docs/hotel-franchise-agreement.pdf",
+        downloadUrl: "/assets/docs/hotel-franchise-agreement.pdf",
+      },
+    ],
   },
   {
     id: "tea",
@@ -299,10 +381,38 @@ export const franchiseInquiryOptions: FranchiseInquiryOption[] = [
     description:
       "Low investment tea outlet business with daily footfall, quick setup, and repeat local customer potential.",
     highlights: ["Low investment", "Daily footfall", "Quick setup"],
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: imgTeaInquiry,
     to: "/tea-franchise-inquiry",
     buttonLabel: "Apply for Tea Franchise",
+    documents: [
+      {
+        id: "requirements",
+        label: "Requirement PDF",
+        description: "Tea outlet setup and requirement pages.",
+        previewImage: imgTeaInquiry,
+        pageImages: [imgTeaInquiry],
+        viewUrl: "/assets/docs/tea-franchise-requirements.pdf",
+        downloadUrl: "/assets/docs/tea-franchise-requirements.pdf",
+      },
+      {
+        id: "rules",
+        label: "Rules PDF",
+        description: "Partner rules and operating guidelines.",
+        previewImage: imgHotelRules,
+        pageImages: [imgHotelRules, imgHotelRules2],
+        viewUrl: "/assets/docs/tea-franchise-rules.pdf",
+        downloadUrl: "/assets/docs/tea-franchise-rules.pdf",
+      },
+      {
+        id: "agreement",
+        label: "Agreement PDF",
+        description: "Franchise agreement reference document.",
+        previewImage: imgAgreement,
+        pageImages: [imgAgreement, imgAgreement2, imgAgreement3, imgAgreement4],
+        viewUrl: "/assets/docs/tea-franchise-agreement.pdf",
+        downloadUrl: "/assets/docs/tea-franchise-agreement.pdf",
+      },
+    ],
   },
 ];
 
@@ -377,8 +487,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "Rich dum-style biryani built as a high-demand hero product for both dine-in and delivery.",
     price: "INR 365",
-    image:
-      "https://images.unsplash.com/photo-1701579231373-4294197a8940?auto=format&fit=crop&w=1200&q=80",
+    image: imgBiryani,
   },
   {
     id: "hotel-dish-chicken-thali",
@@ -386,8 +495,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A comfort-led signature thali that supports the Marathi family dining identity of the brand.",
     price: "INR 390",
-    image:
-      "https://images.unsplash.com/photo-1613292443284-8d10ef9383fe?auto=format&fit=crop&w=1200&q=80",
+    image: imgSpecialChickenThali,
   },
   {
     id: "hotel-dish-tandoori-thali",
@@ -395,8 +503,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A visually strong combo dish that blends tandoori appeal with a satisfying full-meal format.",
     price: "INR 425",
-    image:
-      "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1200&q=80",
+    image: imgTandoori,
   },
   {
     id: "hotel-dish-veg-thali",
@@ -404,8 +511,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A reliable vegetarian mainstay that broadens family appeal and lunch-time repeat business.",
     price: "INR 240",
-    image:
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1200&q=80",
+    image: imgVegThali,
   },
   {
     id: "hotel-dish-mutton-thali",
@@ -413,8 +519,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "A premium regional favorite that helps the menu feel indulgent, rooted, and occasion-worthy.",
     price: "INR 520",
-    image:
-      "https://images.unsplash.com/photo-1604908554165-e710f4f28b2d?auto=format&fit=crop&w=1200&q=80",
+    image: imgMuttonThali,
   },
   {
     id: "hotel-dish-family-combos",
@@ -422,8 +527,7 @@ export const hotelSignatureDishes: FeaturedShowcaseItem[] = [
     category: "Food",
     description: "Group-friendly combo meals designed to improve average billing and make ordering easier for families.",
     price: "INR 899",
-    image:
-      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -506,8 +610,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A signature daily cup with familiar taste and repeat-order potential for local traffic.",
     price: "INR 25",
-    image:
-      "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1200&q=80",
+    image: imgSpecialChaha,
   },
   {
     id: "tea-product-masala-chaha",
@@ -515,8 +618,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A spice-led tea option that strengthens the outlet's rooted, all-day beverage appeal.",
     price: "INR 30",
-    image:
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80",
+    image: imgMasalaChaha,
   },
   {
     id: "tea-product-basundi-chaha",
@@ -524,8 +626,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A richer premium cup that helps the tea menu feel distinct, warm, and memorable.",
     price: "INR 55",
-    image:
-      "https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=1200&q=80",
+    image: imgBasundiChaha,
   },
   {
     id: "tea-product-coffee",
@@ -533,8 +634,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A familiar secondary beverage that widens customer choice without overcomplicating the counter.",
     price: "INR 60",
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: imgCoffee,
   },
   {
     id: "tea-product-cold-coffee",
@@ -542,8 +642,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "A youth-friendly cold option that supports warmer weather demand and premium add-on sales.",
     price: "INR 95",
-    image:
-      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1200&q=80",
+    image: imgColdCoffee,
   },
   {
     id: "tea-product-snacks-combo",
@@ -551,8 +650,7 @@ export const teaSignatureProducts: FeaturedShowcaseItem[] = [
     category: "Tea",
     description: "Easy tea pairings improve ticket size and make the outlet more useful for regular short breaks.",
     price: "INR 89",
-    image:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
@@ -719,54 +817,82 @@ export const teaMenuSections: MenuSectionData[] = [
   },
 ];
 
+export const menuImageCollections: MenuImageCollection[] = [
+  {
+    id: "hotel-menu-images",
+    vertical: "hotel",
+    title: "Hotel Matoshree Full Menu Images",
+    description:
+      "Saved food menu visuals for biryani, thali, chicken, mutton, fish, and special meal promotions.",
+    images: [
+      { label: "Dhavara Special", image: imgDhavaraSpecial },
+      { label: "Special Thali", image: imgVegThali },
+    ],
+  },
+  {
+    id: "tea-menu-images",
+    vertical: "tea",
+    title: "Matoshree Tea Menu Images",
+    description:
+      "Saved tea counter and brand menu visuals for the tea outlet franchise section.",
+    images: [
+      { label: "Tea Banner", image: imgSpecialChaha },
+      { label: "Tea Outlet Visual", image: imgGallery2 },
+    ],
+  },
+];
+
 export const galleryItems: GalleryItem[] = [
   {
     id: "gallery-1",
-    label: "Hotel",
-    title: "Flagship dining mood",
-    caption: "Warm lighting, copper finishes, and family table energy set the premium tone.",
-    image:
-      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+    label: "Brand Banner",
+    title: "Matoshree brand identity",
+    caption: "A full-width brand banner sets the gallery tone before the detailed visuals.",
+    image: imgGalleryBanner,
+    layout: "strip",
   },
   {
     id: "gallery-2",
-    label: "Tea",
-    title: "Counter in full flow",
-    caption: "Fast brew choreography keeps the tapri-premium vibe sharp and efficient.",
-    image:
-      "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=1200&q=80",
+    label: "Founder",
+    title: "Owner portrait",
+    caption: "Founder presence gives the brand a personal and trustworthy face.",
+    image: imgGallery3,
   },
   {
     id: "gallery-3",
-    label: "Launch",
-    title: "Opening day excitement",
-    caption: "Soft launch moments, sampling, and social buzz help local markets notice quickly.",
-    image:
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80",
+    label: "Brand",
+    title: "Owner profile",
+    caption: "A second owner visual adds warmth and credibility to the franchise story.",
+    image: imgGalleryOwner1,
   },
   {
     id: "gallery-4",
-    label: "Kitchen",
-    title: "Chef-led finishing",
-    caption: "Detail-focused plating supports the premium promise of the hotel vertical.",
-    image:
-      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80",
+    label: "Tea",
+    title: "Tea outlet brand banner",
+    caption: "Tea franchise branding stays visible with compact, high-repeat outlet energy.",
+    image: imgSpecialChaha,
   },
   {
     id: "gallery-5",
-    label: "Tea",
-    title: "Evening chai adda",
-    caption: "Compact seating and warm service encourage repeat local hangout traffic.",
-    image:
-      "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80",
+    label: "Biryani",
+    title: "Dam Biryani logo",
+    caption: "A dedicated biryani identity supports food-led recall for the hotel vertical.",
+    image: imgDamBiryaniLogo,
   },
   {
     id: "gallery-6",
-    label: "Hotel",
-    title: "Celebration table",
-    caption: "Group dining and occasion energy strengthen the family-brand memory.",
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+    label: "Brand",
+    title: "Outlet visual",
+    caption: "A wide brand visual helps connect the gallery to real on-ground presentation.",
+    image: imgGallery2,
+  },
+  {
+    id: "gallery-7",
+    label: "Food Banner",
+    title: "Signature food lineup",
+    caption: "A full-width food strip closes the gallery with strong menu energy.",
+    image: imgGalleryDish,
+    layout: "strip",
   },
 ];
 

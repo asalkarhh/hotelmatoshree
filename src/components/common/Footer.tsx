@@ -13,8 +13,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-4 lg:gap-8 mb-12 text-center sm:text-left">
           <div className="flex flex-col items-center sm:items-start lg:col-span-1">
-            <div className="rounded-xl bg-white/5 p-4 shadow-sm backdrop-blur-md inline-block mb-4">
-              <Logo />
+            <div className="inline-block mb-4">
+              <Logo theme="light" />
             </div>
             <p className="mt-4 text-sm leading-relaxed text-brand-vanilla/80 max-w-sm">
               {contactInfo.tagline}
@@ -23,7 +23,7 @@ export function Footer() {
               <a
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-cream/10 text-brand-cream transition hover:bg-brand-red hover:text-white"
                 href={contactInfo.instagram}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <Camera className="h-4 w-4" />
@@ -32,7 +32,7 @@ export function Footer() {
               <a
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-cream/10 text-brand-cream transition hover:bg-brand-red hover:text-white"
                 href={buildWhatsAppLink(contactInfo.whatsappNumber, "Namaskar Matoshree Group")}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <WhatsAppIcon className="h-4 w-4" />
@@ -110,7 +110,7 @@ export function Footer() {
                 <a
                   className="group flex items-center justify-center sm:justify-start gap-3 transition hover:text-white text-left"
                   href={contactInfo.mapLink}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-cream/10 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors">

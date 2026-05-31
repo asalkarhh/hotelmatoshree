@@ -6,9 +6,10 @@ type LogoProps = {
   className?: string;
   compact?: boolean;
   showTagline?: boolean;
+  theme?: "light" | "dark";
 };
 
-export function Logo({ className, compact = false, showTagline = true }: LogoProps) {
+export function Logo({ className, compact = false, showTagline = true, theme = "dark" }: LogoProps) {
   return (
     <Link
       className={cn("flex items-center gap-3", className)}
@@ -23,17 +24,17 @@ export function Logo({ className, compact = false, showTagline = true }: LogoPro
         alt="Matoshree Group"
         className={
           compact
-            ? "h-12 w-12 rounded-2xl bg-white object-contain p-1.5"
-            : "h-14 w-14 rounded-[22px] bg-white object-contain p-1.5"
+            ? "h-16 w-auto object-contain"
+            : "h-24 w-auto object-contain"
         }
         src={logoMark}
       />
       <div className="min-w-0">
-        <p className="font-display text-xl font-semibold text-brand-deep sm:text-2xl">
+        <p className={cn("font-display text-xl font-semibold sm:text-2xl", theme === "dark" ? "text-brand-deep" : "text-brand-cream")}>
           Matoshree Group
         </p>
         {showTagline ? (
-          <p className="truncate text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-brand-red/72 sm:text-[0.72rem]">
+          <p className={cn("truncate text-[0.68rem] font-semibold uppercase tracking-[0.28em] sm:text-[0.72rem]", theme === "dark" ? "text-brand-red/72" : "text-brand-red")}>
             Hotel + Tea Franchise
           </p>
         ) : null}

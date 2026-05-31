@@ -3,14 +3,15 @@ import { useEffect } from "react";
 type SEOProps = {
   title: string;
   description: string;
+  keywords?: string;
 };
 
-export function usePageSEO({ title, description }: SEOProps) {
+export function usePageSEO({ title, description, keywords }: SEOProps) {
   useEffect(() => {
-    // Update the document title
+    // --- SEO: Update the document title ---
     document.title = `${title} | Matoshree Group`;
 
-    // Update or create the meta description tag
+    // --- SEO: Update or create the meta description tag ---
     let metaDescription = document.querySelector('meta[name="description"]');
     
     if (metaDescription) {
@@ -22,7 +23,18 @@ export function usePageSEO({ title, description }: SEOProps) {
       document.head.appendChild(metaDescription);
     }
     
-    // Cleanup function can be added here if you want to revert to a default state
-    // when the component unmounts, though usually not necessary for SPAs.
-  }, [title, description]);
+    // --- SEO: Update or create the meta keywords tag ---
+    if (keywords) {
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      
+      if (metaKeywords) {
+        metaKeywords.setAttribute("content", keywords);
+      } else {
+        metaKeywords = document.createElement("meta");
+        metaKeywords.setAttribute("name", "keywords");
+        metaKeywords.setAttribute("content", keywords);
+        document.head.appendChild(metaKeywords);
+      }
+    }
+  }, [title, description, keywords]);
 }

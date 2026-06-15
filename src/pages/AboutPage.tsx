@@ -1,29 +1,60 @@
 import { motion } from "framer-motion";
-import { aboutPillars, homeStats, partnerJourney } from "../data/siteData";
+
+import { translations } from "../data/translations";
+import { useT } from "./LanguageContext";
 import { viewport } from "../utils/motion";
 import { CTAButton } from "../components/common/CTAButton";
 import { PageHero } from "../components/common/PageHero";
 import { SectionTitle } from "../components/common/SectionTitle";
+import { PageSEO } from "../components/common/PageSEO";
 
 export function AboutPage() {
+  const T = useT();
+  const a = translations.aboutPage;
+  const s = translations.homeStats;
+
+  const stats = [
+    { label: T(s.mainBranch),        value: T(s.mainBranchValue) },
+    { label: T(s.verticals),         value: T(s.verticalsValue) },
+    { label: T(s.franchiseContacts), value: "3+" },
+    { label: T(s.brandPromise),      value: T(s.brandPromiseValue) },
+  ];
+
+  const pillars = [
+    { title: T(a.ap1Title), description: T(a.ap1Desc) },
+    { title: T(a.ap2Title), description: T(a.ap2Desc) },
+    { title: T(a.ap3Title), description: T(a.ap3Desc) },
+  ];
+
+  const journey = [
+    { step: "01", title: T(a.pj1Title), description: T(a.pj1Desc) },
+    { step: "02", title: T(a.pj2Title), description: T(a.pj2Desc) },
+    { step: "03", title: T(a.pj3Title), description: T(a.pj3Desc) },
+    { step: "04", title: T(a.pj4Title), description: T(a.pj4Desc) },
+  ];
+
   return (
     <>
+      <PageSEO
+        title={T(a.eyebrow)}
+        description={T(a.description)}
+      />
       <PageHero
-        description="Matoshree Group ha dual franchise website concept ahe jithe hotel ani tea donhi business lanes one premium identity khali present kelet aahet."
-        eyebrow="About Matoshree Group"
-        stats={homeStats}
-        title="Rooted hospitality, sharp presentation, and a clean base for future growth."
+        description={T(a.description)}
+        eyebrow={T(a.eyebrow)}
+        stats={stats}
+        title={T(a.title)}
       />
 
       <section className="page-section pt-4">
         <div className="section-shell">
           <SectionTitle
-            description="Brand values, tone, and operating mindset donhi verticals madhye consistent thevaycha core structure ithe set kelela aahe."
-            eyebrow="Brand Principles"
-            title="What this base website is built to communicate."
+            description={T(a.brandDesc)}
+            eyebrow={T(a.brandEyebrow)}
+            title={T(a.brandTitle)}
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {aboutPillars.map((pillar) => (
+            {pillars.map((pillar) => (
               <motion.article
                 className="panel-card p-6"
                 initial={{ opacity: 0, y: 24 }}
@@ -44,12 +75,12 @@ export function AboutPage() {
       <section className="page-section pt-4">
         <div className="section-shell">
           <SectionTitle
-            description="Future real onboarding flow sathi hi timeline later backend किंवा CRM integration shivay pan easily extend hou shakte."
-            eyebrow="Partner Journey"
-            title="A simple discovery-to-launch story for both franchise verticals."
+            description={T(a.journeyDesc)}
+            eyebrow={T(a.journeyEyebrow)}
+            title={T(a.journeyTitle)}
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-4">
-            {partnerJourney.map((item) => (
+            {journey.map((item) => (
               <motion.article
                 className="panel-card p-6"
                 initial={{ opacity: 0, y: 24 }}
@@ -60,7 +91,7 @@ export function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-                  Step {item.step}
+                  {T(a.step)} {item.step}
                 </p>
                 <h3 className="mt-3 text-xl font-semibold text-brand-deep">{item.title}</h3>
                 <p className="body-copy mt-3">{item.description}</p>
@@ -73,14 +104,10 @@ export function AboutPage() {
       <section className="page-section pt-4">
         <div className="section-shell">
           <div className="panel-card texture-wash p-6 sm:p-8 lg:p-10">
-            <h2 className="section-title max-w-3xl text-balance">
-              This setup is intentionally component-based, so content, visuals, and future integrations can grow without rebuilding the site.
-            </h2>
-            <p className="body-copy mt-4 max-w-2xl">
-              Sadhya content dummy aahe, pan route structure, shared design system, and form flow production-style base sarkhe wired aahet.
-            </p>
+            <h2 className="section-title max-w-3xl text-balance">{T(a.ctaText)}</h2>
+            <p className="body-copy mt-4 max-w-2xl">{T(a.ctaSubtext)}</p>
             <div className="mt-8">
-              <CTAButton to="/franchise-inquiry">Open Inquiry Flow</CTAButton>
+              <CTAButton to="/franchise-inquiry">{T(a.ctaBtn)}</CTAButton>
             </div>
           </div>
         </div>

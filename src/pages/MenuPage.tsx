@@ -1,33 +1,38 @@
 import { hotelMenuSections, menuImageCollections, teaMenuSections } from "../data/siteData";
+import { translations } from "../data/translations";
+import { useT } from "./LanguageContext";
 import { PageHero } from "../components/common/PageHero";
 import { MenuImageViewer } from "../components/menu/MenuImageViewer";
 import { MenuSection } from "../components/menu/MenuSection";
 
 export function MenuPage() {
+  const T = useT();
+  const m = translations.menuPage;
+
   return (
     <>
       <PageHero
-        description="Menu page dual-vertical structure sathi ready aahe, jithe hotel dishes and tea pairings separately but consistently present hotat."
-        eyebrow="Menu"
+        description={T(m.description)}
+        eyebrow={T(m.eyebrow)}
         stats={[
-          { label: "Hotel sections", value: `${hotelMenuSections.length}` },
-          { label: "Tea sections", value: `${teaMenuSections.length}` },
-          { label: "Visual style", value: "Premium cards" },
-          { label: "Content", value: "Dummy for now" },
+          { label: T(m.statHotel),   value: `${hotelMenuSections.length}` },
+          { label: T(m.statTea),     value: `${teaMenuSections.length}` },
+          { label: T(m.statVisual),  value: "Premium cards" },
+          { label: T(m.statContent), value: "Dummy for now" },
         ]}
-        title="Signature food and chai menu previews for both franchise stories."
+        title={T(m.title)}
       />
       <MenuSection
-        description="He cards future real dishes, photos, and pricing updates sathi plug-and-play structure detat."
-        eyebrow="Hotel Menu"
+        description={T(m.hotelDesc)}
+        eyebrow={T(m.hotelEyebrow)}
         sections={hotelMenuSections}
-        title="Hotel franchise menu blocks"
+        title={T(m.hotelTitle)}
       />
       <MenuSection
-        description="Tea page section repeat habit business ani snack upsell story visually support karto."
-        eyebrow="Tea Menu"
+        description={T(m.teaDesc)}
+        eyebrow={T(m.teaEyebrow)}
         sections={teaMenuSections}
-        title="Tea franchise menu blocks"
+        title={T(m.teaTitle)}
       />
       <MenuImageViewer collections={menuImageCollections} />
     </>

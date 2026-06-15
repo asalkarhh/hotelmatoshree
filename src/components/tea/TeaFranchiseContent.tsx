@@ -13,12 +13,11 @@ import {
 import { motion } from "framer-motion";
 import {
   teaBranches,
-  teaConceptPoints,
-  teaFranchiseBenefits,
-  teaIdealLocations,
-  teaInvestmentPlaceholder,
   teaSignatureProducts,
+  teaInvestmentPlaceholder,
 } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { viewport } from "../../utils/motion";
 import { BranchCard } from "../branches/BranchCard";
 import { CTAButton } from "../common/CTAButton";
@@ -31,19 +30,42 @@ const benefitIcons = [ShieldCheck, Users, Store, Rocket, TimerReset, BriefcaseBu
 const locationIcons = [MapPin, Building2, Store, Users, BriefcaseBusiness, Fuel];
 
 export function TeaFranchiseContent() {
+  const T = useT();
+  const t = translations.teaPage;
   const proofBranches = teaBranches.slice(0, 3);
+
+  const conceptPoints = [
+    { title: T(t.tc1Title), description: T(t.tc1Desc) },
+    { title: T(t.tc2Title), description: T(t.tc2Desc) },
+    { title: T(t.tc3Title), description: T(t.tc3Desc) },
+    { title: T(t.tc4Title), description: T(t.tc4Desc) },
+    { title: T(t.tc5Title), description: T(t.tc5Desc) },
+  ];
+
+  const benefits = [
+    { title: T(t.tb1Title), description: T(t.tb1Desc) },
+    { title: T(t.tb2Title), description: T(t.tb2Desc) },
+    { title: T(t.tb3Title), description: T(t.tb3Desc) },
+    { title: T(t.tb4Title), description: T(t.tb4Desc) },
+    { title: T(t.tb5Title), description: T(t.tb5Desc) },
+    { title: T(t.tb6Title), description: T(t.tb6Desc) },
+  ];
+
+  const idealLocations = [
+    T(t.tloc1), T(t.tloc2), T(t.tloc3), T(t.tloc4), T(t.tloc5), T(t.tloc6),
+  ];
 
   return (
     <>
       <PageHero
         actions={[
-          { label: "Apply for Tea Franchise", to: "/tea-franchise-inquiry" },
-          { label: "View Tea Branches", to: "/branches", variant: "secondary" },
+          { label: T(t.applyBtn),     to: "/tea-franchise-inquiry" },
+          { label: T(t.viewBranches), to: "/branches", variant: "secondary" },
         ]}
-        chips={["Low Investment", "Daily Repeat Customers", "Quick Setup", "Compact Format"]}
-        description="कमी investment मध्ये high-demand tea outlet business"
-        eyebrow="Matoshree Tea"
-        title="Matoshree Tea Franchise सुरू करा"
+        chips={[T(t.chip1), T(t.chip2), T(t.chip3), T(t.chip4)]}
+        description={T(t.description)}
+        eyebrow={T(t.eyebrow)}
+        title={T(t.title)}
         aside={
           <div className="grid gap-4">
             <div className="relative overflow-hidden rounded-[28px] border border-brand-brown/10">
@@ -56,26 +78,23 @@ export function TeaFranchiseContent() {
               <div className="image-overlay absolute inset-0" />
               <div className="absolute inset-x-0 bottom-0 p-5 text-brand-cream">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">
-                  Tea Outlet Business
+                  {T(t.teaOutlet)}
                 </p>
-                <p className="mt-2 text-lg font-semibold">
-                  Compact tea format with repeat footfall, simpler operations, and a premium local chai story.
-                </p>
+                <p className="mt-2 text-lg font-semibold">{T(t.teaCaption)}</p>
               </div>
             </div>
-
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="stat-tile">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-                  Branch proof
+                  {T(t.branchProof)}
                 </p>
                 <p className="mt-3 font-display text-3xl text-brand-deep">{teaBranches.length}+</p>
               </div>
               <div className="stat-tile">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-                  Format
+                  {T(t.format)}
                 </p>
-                <p className="mt-3 font-display text-3xl text-brand-deep">Compact Outlet</p>
+                <p className="mt-3 font-display text-3xl text-brand-deep">{T(t.compactOutlet)}</p>
               </div>
             </div>
           </div>
@@ -101,11 +120,11 @@ export function TeaFranchiseContent() {
               <div className="image-overlay absolute inset-0" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-brand-cream">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">
-                  About Tea Concept
+                  {T(t.aboutConceptEye)}
                 </p>
-                <h2 className="mt-3 font-display text-4xl">A compact chai-first business with daily local demand.</h2>
+                <h2 className="mt-3 font-display text-4xl">{T(t.conceptCaption)}</h2>
                 <p className="mt-3 max-w-xl text-sm leading-7 text-brand-cream/82">
-                  Matoshree Tea is shaped as an approachable outlet model for small and medium investors looking for faster, habit-driven beverage business.
+                  {T(t.conceptSubtext)}
                 </p>
               </div>
             </div>
@@ -113,13 +132,12 @@ export function TeaFranchiseContent() {
 
           <div>
             <SectionTitle
-              description="Tea franchise concept samjun ghyaycha asel tar format simplicity, repeat customers, ani quick rollout he core points aahet."
-              eyebrow="About Tea Concept"
-              title="Why the Matoshree Tea model is simple, scalable, and investor-friendly."
+              description={T(t.conceptDesc)}
+              eyebrow={T(t.conceptEyebrow)}
+              title={T(t.conceptTitle)}
             />
-
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {teaConceptPoints.map((point) => (
+              {conceptPoints.map((point) => (
                 <motion.article
                   className="soft-card p-5"
                   initial={{ opacity: 0, y: 24 }}
@@ -141,11 +159,10 @@ export function TeaFranchiseContent() {
       <section className="page-section pt-4">
         <div className="section-shell">
           <SectionTitle
-            description="Tea products section gives investors a clearer idea of what the outlet can sell as signature daily movers and add-ons."
-            eyebrow="Tea Products"
-            title="Core products that make the Matoshree Tea outlet feel warm, premium, and repeat-worthy."
+            description={T(t.productsDesc)}
+            eyebrow={T(t.productsEyebrow)}
+            title={T(t.productsTitle)}
           />
-
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {teaSignatureProducts.map((product) => (
               <motion.div
@@ -166,13 +183,12 @@ export function TeaFranchiseContent() {
       <section className="page-section pt-4">
         <div className="section-shell">
           <SectionTitle
-            description="Small and medium investors la tea format attractive वाटतो कारण launch complexity kami ani repeat demand stronger aste."
-            eyebrow="Why Tea Franchise"
-            title="Advantages that make the tea franchise a practical entry into F&B."
+            description={T(t.whyDesc)}
+            eyebrow={T(t.whyEyebrow)}
+            title={T(t.whyTitle)}
           />
-
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {teaFranchiseBenefits.map((benefit, index) => (
+            {benefits.map((benefit, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 key={benefit.title}
@@ -198,13 +214,12 @@ export function TeaFranchiseContent() {
             whileInView={{ opacity: 1, y: 0 }}
           >
             <SectionTitle
-              description="Tea outlets strongest perform kartat jithe quick stop traffic, habit visits, and visibility strong aste."
-              eyebrow="Ideal Location"
-              title="Catchments where a Matoshree Tea outlet can naturally fit."
+              description={T(t.locationDesc)}
+              eyebrow={T(t.locationEyebrow)}
+              title={T(t.locationTitle)}
             />
-
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {teaIdealLocations.map((location, index) => {
+              {idealLocations.map((location, index) => {
                 const Icon = locationIcons[index];
                 return (
                   <div className="chip inline-flex items-center gap-2" key={location}>
@@ -224,21 +239,18 @@ export function TeaFranchiseContent() {
             whileInView={{ opacity: 1, y: 0 }}
           >
             <SectionTitle
-              description="Investment note intentionally placeholder thevla aahe so actual format fit discussion nantar share karta yeil."
-              eyebrow="Investment Details Placeholder"
-              title="Discussion-led tea investment flow."
+              description={T(t.investDesc)}
+              eyebrow={T(t.investEyebrow)}
+              title={T(t.investTitle)}
             />
-
             <div className="mt-6 rounded-[28px] border border-brand-saffron/24 bg-brand-saffron/10 p-5">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-red/74">
-                Note
+                {T(t.investNote)}
               </p>
               <p className="mt-3 text-lg font-semibold text-brand-deep">
                 {teaInvestmentPlaceholder}
               </p>
-              <p className="body-copy mt-3">
-                Final numbers can depend on location, outlet size, frontage, and launch requirement in the selected area.
-              </p>
+              <p className="body-copy mt-3">{T(t.investNoteText)}</p>
             </div>
           </motion.article>
         </div>
@@ -247,11 +259,10 @@ export function TeaFranchiseContent() {
       <section className="page-section pt-4">
         <div className="section-shell">
           <SectionTitle
-            description="Dummy tea branch proof keeps the page grounded and shows how the compact outlet story can already look on-ground."
-            eyebrow="Tea Branch Preview"
-            title="Sample Matoshree Tea branches from the current dummy portfolio."
+            description={T(t.branchDesc)}
+            eyebrow={T(t.branchEyebrow)}
+            title={T(t.branchTitle)}
           />
-
           <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {proofBranches.map((branch) => (
               <BranchCard branch={branch} key={branch.id} />
@@ -273,17 +284,17 @@ export function TeaFranchiseContent() {
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand-cream">
                   <CupSoda className="h-4 w-4" />
-                  Tea Franchise CTA
+                  {T(t.ctaEyebrow)}
                 </span>
                 <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-                  तुमच्या area मध्ये Matoshree Tea Outlet सुरू करायचं आहे?
+                  {T(t.ctaHeading)}
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-brand-cream/84 sm:text-base">
-                  Low investment, repeat customer habit, ani compact setup sobat tea franchise discussion aajach start kara.
+                  {T(t.ctaText)}
                 </p>
               </div>
               <CTAButton className="w-full sm:w-auto" to="/tea-franchise-inquiry" variant="secondary">
-                Apply Now
+                {T(t.applyNow)}
               </CTAButton>
             </div>
           </motion.div>

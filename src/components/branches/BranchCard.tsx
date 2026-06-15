@@ -1,22 +1,23 @@
 import { Clock3, MapPin, Phone, Store, User } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Branch } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { viewport } from "../../utils/motion";
 import { buildWhatsAppLink } from "../../utils/whatsapp";
 import { CTAButton } from "../common/CTAButton";
 import { WhatsAppIcon } from "../common/WhatsAppIcon";
 
-type BranchCardProps = {
-  branch: Branch;
-  showActions?: boolean;
-};
+type BranchCardProps = { branch: Branch; showActions?: boolean };
 
 export function BranchCard({ branch, showActions = false }: BranchCardProps) {
+  const T = useT();
+  const bc = translations.branchCard;
   const branchWhatsAppMessage = `Namaskar, mala ${branch.name} branch baddal mahiti pahije.`;
   const defaultTagline =
     branch.vertical === "hotel"
-      ? `Premium family dining experience at ${branch.locality}, ${branch.city}.`
-      : `Your favorite daily chai adda at ${branch.locality}, ${branch.city}.`;
+      ? `${T(bc.hotelTagline)}`
+      : `${T(bc.teaTagline)}`;
 
   return (
     <motion.article
@@ -34,9 +35,7 @@ export function BranchCard({ branch, showActions = false }: BranchCardProps) {
           {branch.city}
         </div>
         <div className="absolute inset-x-0 bottom-0 p-5 text-brand-cream">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">
-            {branch.locality}
-          </p>
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">{branch.locality}</p>
           <h3 className="mt-2 font-display text-3xl">{branch.name}</h3>
         </div>
       </div>
@@ -45,11 +44,11 @@ export function BranchCard({ branch, showActions = false }: BranchCardProps) {
         <div className="space-y-4">
           <div className="flex items-start gap-3 text-sm text-brand-brown/76">
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
-            <span>{branch.address}</span>
+            <span>{typeof branch.address === "string" ? branch.address : T(branch.address)}</span>
           </div>
           <div className="flex items-start gap-3 text-sm text-brand-brown/76">
             <User className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
-            <span>Manager: {branch.managerName || "Branch Manager"}</span>
+            <span>{T(bc.manager)} {branch.managerName || "Branch Manager"}</span>
           </div>
           {showActions ? (
             <div className="flex items-start gap-3 text-sm text-brand-brown/76">
@@ -68,7 +67,7 @@ export function BranchCard({ branch, showActions = false }: BranchCardProps) {
           <p className="body-copy">{branch.note}</p>
           <div className="flex flex-wrap gap-2">
             <span className="chip">{branch.specialty}</span>
-            <span className="chip">{branch.vertical === "hotel" ? "Hotel vertical" : "Tea vertical"}</span>
+            <span className="chip">{branch.vertical === "hotel" ? T(bc.hotelVertical) : T(bc.teaVertical)}</span>
           </div>
         </div>
 
@@ -81,10 +80,10 @@ export function BranchCard({ branch, showActions = false }: BranchCardProps) {
         {showActions ? (
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <CTAButton href={branch.mapLink} icon={MapPin} iconPosition="left" target="_blank" variant="map">
-              Google Map
+              {T(bc.googleMap)}
             </CTAButton>
             <CTAButton href={`tel:${branch.phone.replaceAll(" ", "")}`} icon={Phone} iconPosition="left" variant="primary">
-              Call
+              {T(bc.call)}
             </CTAButton>
             <CTAButton
               href={buildWhatsAppLink(branch.phone.replace(/\D/g, ""), branchWhatsAppMessage)}
@@ -93,7 +92,7 @@ export function BranchCard({ branch, showActions = false }: BranchCardProps) {
               target="_blank"
               variant="whatsapp"
             >
-              WhatsApp
+              {T(bc.whatsapp)}
             </CTAButton>
           </div>
         ) : null}

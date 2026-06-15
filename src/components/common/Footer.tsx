@@ -1,12 +1,27 @@
 import { Camera, Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { contactInfo, footerHotelLinks, footerTeaLinks } from "../../data/siteData";
+import { contactInfo } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { buildWhatsAppLink } from "../../utils/whatsapp";
 import { Logo } from "./Logo";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const T = useT();
+  const f = translations.footer;
+
+  const hotelLinks = [
+    { label: T(f.hotelFranchiseModel), to: "/hotel-franchise" },
+    { label: T(f.signatureMenu),       to: "/menu" },
+    { label: T(f.ourLocations),        to: "/branches" },
+  ];
+  const teaLinks = [
+    { label: T(f.teaFranchiseModel), to: "/tea-franchise" },
+    { label: T(f.brandGallery),      to: "/gallery" },
+    { label: T(f.partnerWithUs),     to: "/franchise-inquiry" },
+  ];
 
   return (
     <footer className="bg-brand-deep pt-16 pb-8 mt-12 border-t-[4px] border-brand-red text-brand-cream">
@@ -43,10 +58,10 @@ export function Footer() {
 
           <div className="flex flex-col items-center sm:items-start">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-6">
-              Hotel Franchise
+              {T(f.hotelFranchiseHeading)}
             </h3>
             <ul className="flex flex-col gap-4">
-              {footerHotelLinks.map((item) => (
+              {hotelLinks.map((item) => (
                 <li key={item.to}>
                   <Link
                     className="group flex items-center gap-2 text-sm text-brand-vanilla/70 transition hover:text-white"
@@ -62,10 +77,10 @@ export function Footer() {
 
           <div className="flex flex-col items-center sm:items-start">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-6">
-              Tea Franchise
+              {T(f.teaFranchiseHeading)}
             </h3>
             <ul className="flex flex-col gap-4">
-              {footerTeaLinks.map((item) => (
+              {teaLinks.map((item) => (
                 <li key={item.to}>
                   <Link
                     className="group flex items-center gap-2 text-sm text-brand-vanilla/70 transition hover:text-white"
@@ -81,7 +96,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center sm:items-start">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-brand-red mb-6">
-              Contact
+              {T(f.contactHeading)}
             </h3>
             <ul className="flex flex-col gap-4 text-sm text-brand-vanilla/70">
               <li>
@@ -124,12 +139,12 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-brand-cream/10 pt-8 sm:flex-row text-xs text-brand-vanilla/50">
-          <p>&copy; {year} {contactInfo.brand}. All rights reserved.</p>
+          <p>&copy; {year} {contactInfo.brand}. {T(f.allRightsReserved)}</p>
           <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white transition">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-white transition">{T(f.privacyPolicy)}</Link>
+            <Link to="/terms" className="hover:text-white transition">{T(f.termsOfService)}</Link>
           </div>
-      </div>
+        </div>
       </div>
     </footer>
   );

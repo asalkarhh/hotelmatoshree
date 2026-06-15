@@ -1,55 +1,48 @@
 import { useState } from "react";
-import { Building2, CupSoda, Search, Store, Briefcase, X } from "lucide-react";
+import { Building2, Briefcase, CupSoda, Search, Store, X } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Branch } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { cn } from "../../utils/cn";
 import { viewport } from "../../utils/motion";
 import { BranchCard } from "./BranchCard";
 
-type BranchesDirectoryProps = {
-  hotelBranches: Branch[];
-  teaBranches: Branch[];
-};
-
-const tabs = [
-  {
-    key: "all" as const,
-    label: "All Branches",
-    icon: Store,
-  },
-  {
-    key: "hotel" as const,
-    label: "Hotel Branches",
-    icon: Building2,
-  },
-  {
-    key: "tea" as const,
-    label: "Tea Branches",
-    icon: CupSoda,
-  },
-];
+type BranchesDirectoryProps = { hotelBranches: Branch[]; teaBranches: Branch[] };
 
 export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirectoryProps) {
   const [activeTab, setActiveTab] = useState<"all" | "hotel" | "tea">("all");
   const [search, setSearch] = useState("");
+  const T = useT();
+  const d = translations.branchDir;
+
+  const tabs = [
+    { key: "all"   as const, label: T(d.tabAll),   icon: Store    },
+    { key: "hotel" as const, label: T(d.tabHotel), icon: Building2 },
+    { key: "tea"   as const, label: T(d.tabTea),   icon: CupSoda  },
+  ];
 
   const sourceBranches =
-    activeTab === "all"
-      ? [...hotelBranches, ...teaBranches]
-      : activeTab === "hotel"
-      ? hotelBranches
-      : teaBranches;
-  const normalizedSearch = search.trim().toLowerCase();
-  const filteredBranches = sourceBranches.filter((branch) => {
-    if (!normalizedSearch) {
-      return true;
-    }
+    activeTab === "all" ? [...hotelBranches, ...teaBranches]
+    : activeTab === "hotel" ? hotelBranches
+    : teaBranches;
 
-    return (
-      branch.name.toLowerCase().includes(normalizedSearch) ||
-      branch.city.toLowerCase().includes(normalizedSearch)
-    );
-  });
+  const normalizedSearch = search.trim().toLowerCase();
+  const filteredBranches = sourceBranches.filter((branch) =>
+    !normalizedSearch ||
+    branch.name.toLowerCase().includes(normalizedSearch) ||
+    branch.city.toLowerCase().includes(normalizedSearch)
+  );
+
+  const headingText =
+    activeTab === "all"   ? T(d.allHeading)
+    : activeTab === "hotel" ? T(d.hotelHeading)
+    : T(d.teaHeading);
+
+  const labelText =
+    activeTab === "all"   ? T(d.allLabel)
+    : activeTab === "hotel" ? T(d.hotelLabel)
+    : T(d.teaLabel);
 
   return (
     <section className="page-section pt-4">
@@ -86,8 +79,8 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-brown/44" />
                 <input
                   className="input-field pl-11 pr-10"
-                  onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search by branch name or city"
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder={T(d.searchPlaceholder)}
                   type="text"
                   value={search}
                 />
@@ -108,7 +101,7 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
                 className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand-deep px-5 py-3 text-sm font-semibold text-brand-cream shadow-md transition hover:bg-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red focus:ring-offset-2"
               >
                 <Briefcase className="h-4 w-4" />
-                Franchise Inquiry
+                {T(d.franchiseInquiry)}
               </a>
             </div>
           </div>
@@ -116,19 +109,11 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-              {activeTab === "all" ? "All Branches" : activeTab === "hotel" ? "Hotel Branches" : "Tea Branches"}
-            </p>
-            <h2 className="mt-2 font-display text-3xl text-brand-deep">
-              {activeTab === "all"
-                ? "Matoshree branches across Maharashtra"
-                : activeTab === "hotel"
-                ? "Hotel Matoshree branches across Maharashtra"
-                : "Matoshree Tea branches across Maharashtra"}
-            </h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">{labelText}</p>
+            <h2 className="mt-2 font-display text-3xl text-brand-deep">{headingText}</h2>
           </div>
           <p className="rounded-full border border-brand-brown/10 bg-white/75 px-4 py-2 text-sm font-semibold text-brand-brown/72">
-            {filteredBranches.length} branch{filteredBranches.length === 1 ? "" : "es"} found
+            {filteredBranches.length} {filteredBranches.length === 1 ? T(d.branchFoundOne) : T(d.branchFound)}
           </p>
         </div>
 
@@ -144,10 +129,8 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
             className="panel-card mt-8 p-8 text-center"
             initial={{ opacity: 0, y: 16 }}
           >
-            <p className="text-lg font-semibold text-brand-deep">No branches found</p>
-            <p className="body-copy mt-3">
-              Try another branch name kiwa city search term.
-            </p>
+            <p className="text-lg font-semibold text-brand-deep">{T(d.noResults)}</p>
+            <p className="body-copy mt-3">{T(d.noResultsSub)}</p>
           </motion.div>
         ) : null}
       </div>

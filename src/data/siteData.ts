@@ -58,7 +58,7 @@ export type Branch = {
   tagline?: string;
   city: string;
   locality: string;
-  address: string;
+  address: string | { mr: string; en: string };
   phone: string;
   mapLink: string;
   timings: string;

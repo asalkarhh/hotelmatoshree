@@ -1,6 +1,8 @@
 import { Building2, Rocket, ShieldCheck, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { homeBenefits } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { viewport } from "../../utils/motion";
 import { SectionTitle } from "../common/SectionTitle";
 
@@ -12,19 +14,27 @@ const iconMap = {
 };
 
 export function HomeWhyMatoshree() {
+  const T = useT();
+  const w = translations.homeWhy;
+
+  const benefits = [
+    { ...homeBenefits[0], title: T(w.b1Title), description: T(w.b1Desc) },
+    { ...homeBenefits[1], title: T(w.b2Title), description: T(w.b2Desc) },
+    { ...homeBenefits[2], title: T(w.b3Title), description: T(w.b3Desc) },
+    { ...homeBenefits[3], title: T(w.b4Title), description: T(w.b4Desc) },
+  ];
+
   return (
     <section className="page-section pt-4">
       <div className="section-shell">
         <SectionTitle
-          description="This section highlights the core reasons why Matoshree can be positioned as a strong regional franchise brand."
-          eyebrow="Why Matoshree"
-          title="Built for local trust, repeat demand, and franchise growth."
+          description={T(w.description)}
+          eyebrow={T(w.eyebrow)}
+          title={T(w.title)}
         />
-
         <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {homeBenefits.map((benefit) => {
+          {benefits.map((benefit) => {
             const Icon = iconMap[benefit.id as keyof typeof iconMap];
-
             return (
               <motion.article
                 className="panel-card p-6"

@@ -1,20 +1,25 @@
 import { galleryItems } from "../data/siteData";
+import { translations } from "../data/translations";
+import { useT } from "./LanguageContext";
 import { PageHero } from "../components/common/PageHero";
 import { GalleryGrid } from "../components/gallery/GalleryGrid";
 
 export function GalleryPage() {
+  const T = useT();
+  const g = translations.galleryPage;
+
   return (
     <>
       <PageHero
-        description="Gallery layout brand ambience, product mood, and launch moments capture karnyasathi warm premium grid madhe set kelela aahe."
-        eyebrow="Gallery"
+        description={T(g.description)}
+        eyebrow={T(g.eyebrow)}
         stats={[
-          { label: "Image cards", value: `${galleryItems.length}` },
-          { label: "Formats shown", value: "Hotel + Tea" },
-          { label: "Motion", value: "Framer Motion" },
-          { label: "Content type", value: "Dummy visuals" },
+          { label: T(g.statImages),  value: `${galleryItems.length}` },
+          { label: T(g.statFormats), value: "Hotel + Tea" },
+          { label: T(g.statMotion),  value: "Framer Motion" },
+          { label: T(g.statContent), value: "Dummy visuals" },
         ]}
-        title="A visual gallery for ambience, products, and franchise energy."
+        title={T(g.title)}
       />
       <section className="page-section pt-4">
         <div className="section-shell">

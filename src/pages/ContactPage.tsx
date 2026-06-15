@@ -1,20 +1,25 @@
+import { translations } from "../data/translations";
+import { useT } from "./LanguageContext";
 import { CTAButton } from "../components/common/CTAButton";
 import { PageHero } from "../components/common/PageHero";
 import { ContactMethods } from "../components/forms/ContactMethods";
 
 export function ContactPage() {
+  const T = useT();
+  const c = translations.contactPage;
+
   return (
     <>
       <PageHero
-        description="Contact page franchise inquiry, direct brand chat, and social touchpoints ya saglya paths la one clear hub provide karto."
-        eyebrow="Contact"
+        description={T(c.description)}
+        eyebrow={T(c.eyebrow)}
         stats={[
-          { label: "Channels", value: "4+" },
-          { label: "Response route", value: "Call / Mail / WA" },
-          { label: "Verticals", value: "Hotel + Tea" },
-          { label: "Main branch", value: "Dharashiv" },
+          { label: T(c.statChannels),  value: "4+" },
+          { label: T(c.statResponse),  value: "Call / Mail / WA" },
+          { label: T(c.statVerticals), value: "Hotel + Tea" },
+          { label: T(c.statBranch),    value: "Dharashiv" },
         ]}
-        title="Talk to the Matoshree team through the channel that suits you."
+        title={T(c.title)}
       />
 
       <section className="page-section pt-4">
@@ -22,40 +27,24 @@ export function ContactPage() {
           <ContactMethods />
 
           <div className="panel-card p-6 sm:p-8">
-            <h2 className="section-title">Quick next steps</h2>
-            <p className="body-copy mt-3">
-              Jar tumhala franchise details pahijet astil tar direct inquiry route best aahe. Brand overview pahije asel tar vertical pages ready aahet.
-            </p>
+            <h2 className="section-title">{T(c.quickSteps)}</h2>
+            <p className="body-copy mt-3">{T(c.quickDesc)}</p>
 
             <div className="mt-8 grid gap-4">
               <div className="soft-card p-5">
-                <h3 className="text-lg font-semibold text-brand-deep">Hotel Franchise</h3>
-                <p className="body-copy mt-3">
-                  Biryani, thali, veg-nonveg dining आणि family restaurant model साठी dedicated page ready आहे.
-                </p>
-                <CTAButton className="mt-5" to="/hotel-franchise" variant="secondary">
-                  Explore Hotel Model
-                </CTAButton>
+                <h3 className="text-lg font-semibold text-brand-deep">{T(c.hotelTitle)}</h3>
+                <p className="body-copy mt-3">{T(c.hotelDesc)}</p>
+                <CTAButton className="mt-5" to="/hotel-franchise" variant="secondary">{T(c.exploreHotel)}</CTAButton>
               </div>
-
               <div className="soft-card p-5">
-                <h3 className="text-lg font-semibold text-brand-deep">Tea Franchise</h3>
-                <p className="body-copy mt-3">
-                  Chaha, vadapav, pohe आणि compact breakfast outlet model साठी details पाहू शकता.
-                </p>
-                <CTAButton className="mt-5" to="/tea-franchise" variant="secondary">
-                  Explore Tea Model
-                </CTAButton>
+                <h3 className="text-lg font-semibold text-brand-deep">{T(c.teaTitle)}</h3>
+                <p className="body-copy mt-3">{T(c.teaDesc)}</p>
+                <CTAButton className="mt-5" to="/tea-franchise" variant="secondary">{T(c.exploreTea)}</CTAButton>
               </div>
-
               <div className="soft-card p-5">
-                <h3 className="text-lg font-semibold text-brand-deep">Franchise Inquiry</h3>
-                <p className="body-copy mt-3">
-                  Requirement, rules आणि agreement documents पाहून direct inquiry submit करा.
-                </p>
-                <CTAButton className="mt-5" to="/franchise-inquiry">
-                  Open Inquiry Flow
-                </CTAButton>
+                <h3 className="text-lg font-semibold text-brand-deep">{T(c.inquiryTitle)}</h3>
+                <p className="body-copy mt-3">{T(c.inquiryDesc)}</p>
+                <CTAButton className="mt-5" to="/franchise-inquiry">{T(c.openInquiry)}</CTAButton>
               </div>
             </div>
           </div>

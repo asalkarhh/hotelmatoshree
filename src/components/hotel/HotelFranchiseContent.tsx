@@ -1,23 +1,8 @@
-import {
-  BookOpen,
-  Building2,
-  Camera,
-  MapPin,
-  Megaphone,
-  Rocket,
-  ShieldCheck,
-  UtensilsCrossed,
-} from "lucide-react";
+import { BookOpen, Building2, Camera, MapPin, Megaphone, Rocket, ShieldCheck, UtensilsCrossed } from "lucide-react";
 import { motion } from "framer-motion";
-import {
-  galleryItems,
-  hotelBranches,
-  hotelConceptPoints,
-  hotelFranchiseBenefits,
-  hotelIdealLocations,
-  hotelInvestmentPlaceholder,
-  hotelSignatureDishes,
-} from "../../data/siteData";
+import { galleryItems, hotelBranches, hotelSignatureDishes, hotelInvestmentPlaceholder } from "../../data/siteData";
+import { translations } from "../../data/translations";
+import { useT } from "../../pages/LanguageContext";
 import { viewport } from "../../utils/motion";
 import { BranchCard } from "../branches/BranchCard";
 import { CTAButton } from "../common/CTAButton";
@@ -29,51 +14,66 @@ import { HotelSignatureDishCard } from "./HotelSignatureDishCard";
 const benefitIcons = [ShieldCheck, UtensilsCrossed, Megaphone, BookOpen, Rocket, Camera];
 
 export function HotelFranchiseContent() {
+  const T = useT();
+  const h = translations.hotelPage;
   const proofBranches = hotelBranches.slice(0, 3);
+
+  const conceptPoints = [
+    { title: T(h.cp1Title), description: T(h.cp1Desc) },
+    { title: T(h.cp2Title), description: T(h.cp2Desc) },
+    { title: T(h.cp3Title), description: T(h.cp3Desc) },
+    { title: T(h.cp4Title), description: T(h.cp4Desc) },
+  ];
+
+  const benefits = [
+    { title: T(h.hb1Title), description: T(h.hb1Desc) },
+    { title: T(h.hb2Title), description: T(h.hb2Desc) },
+    { title: T(h.hb3Title), description: T(h.hb3Desc) },
+    { title: T(h.hb4Title), description: T(h.hb4Desc) },
+    { title: T(h.hb5Title), description: T(h.hb5Desc) },
+    { title: T(h.hb6Title), description: T(h.hb6Desc) },
+  ];
+
+  const idealLocations = [T(h.loc1), T(h.loc2), T(h.loc3), T(h.loc4), T(h.loc5)];
+
+  const dishes = [
+    { ...hotelSignatureDishes[0], name: "Chicken Dum Biryani" },
+    { ...hotelSignatureDishes[1], name: "Special Chicken Thali" },
+    { ...hotelSignatureDishes[2], name: "Tandoori Leg Piece Thali" },
+    { ...hotelSignatureDishes[3], name: "Veg Thali" },
+    { ...hotelSignatureDishes[4], name: "Mutton Thali" },
+    { ...hotelSignatureDishes[5], name: "Family Combos" },
+  ];
 
   return (
     <>
       <PageHero
         actions={[
-          { label: "Apply for Hotel Franchise", to: "/hotel-franchise-inquiry" },
-          { label: "View Branches", to: "/branches", variant: "secondary" },
+          { label: T(h.applyBtn),     to: "/hotel-franchise-inquiry" },
+          { label: T(h.viewBranches), to: "/branches", variant: "secondary" },
         ]}
-        chips={["Family Restaurant", "Veg + Non-Veg", "Biryani & Thali", "Maharashtra Footprint"]}
-        description="महाराष्ट्रभर वाढणारा trusted food brand — Biryani, Thali आणि Family Restaurant concept"
-        eyebrow="Hotel Matoshree"
-        title="Hotel Matoshree Franchise सुरू करा"
+        chips={[T(h.chip1), T(h.chip2), T(h.chip3), T(h.chip4)]}
+        description={T(h.description)}
+        eyebrow={T(h.eyebrow)}
+        title={T(h.title)}
         aside={
           <div className="grid gap-4">
             <div className="relative overflow-hidden rounded-[28px] border border-brand-brown/10">
-              <img
-                alt="Hotel Matoshree dining concept"
-                className="h-72 w-full object-cover"
-                loading="lazy"
-                src={galleryItems[5].image}
-              />
+              <img alt="Hotel Matoshree dining concept" className="h-72 w-full object-cover" loading="lazy" src={galleryItems[5].image} />
               <div className="image-overlay absolute inset-0" />
               <div className="absolute inset-x-0 bottom-0 p-5 text-brand-cream">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">
-                  Trusted Food Brand
-                </p>
-                <p className="mt-2 text-lg font-semibold">
-                  Family dining, biryani, thali, and premium Marathi hospitality under one format.
-                </p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">{T(h.trustedBrand)}</p>
+                <p className="mt-2 text-lg font-semibold">{T(h.trustedCaption)}</p>
               </div>
             </div>
-
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="stat-tile">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-                  Branch proof
-                </p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">{T(h.branchProof)}</p>
                 <p className="mt-3 font-display text-3xl text-brand-deep">{hotelBranches.length}+</p>
               </div>
               <div className="stat-tile">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">
-                  Concept
-                </p>
-                <p className="mt-3 font-display text-3xl text-brand-deep">Family Dining</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-red/72">{T(h.concept)}</p>
+                <p className="mt-3 font-display text-3xl text-brand-deep">{T(h.familyDining)}</p>
               </div>
             </div>
           </div>
@@ -82,50 +82,23 @@ export function HotelFranchiseContent() {
 
       <section className="page-section pt-4">
         <div className="section-shell grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-          <motion.article
-            className="panel-card overflow-hidden"
-            initial={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.55 }}
-            viewport={viewport}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
+          <motion.article className="panel-card overflow-hidden" initial={{ opacity: 0, y: 24 }} transition={{ duration: 0.55 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}>
             <div className="relative h-full min-h-80 overflow-hidden">
-              <img
-                alt="Hotel Matoshree concept"
-                className="h-full w-full object-cover"
-                loading="lazy"
-                src={hotelBranches[0].image}
-              />
+              <img alt="Hotel Matoshree concept" className="h-full w-full object-cover" loading="lazy" src={hotelBranches[0].image} />
               <div className="image-overlay absolute inset-0" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-brand-cream">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">
-                  About Hotel Concept
-                </p>
-                <h2 className="mt-3 font-display text-4xl">A Maharashtra-first family restaurant format.</h2>
-                <p className="mt-3 max-w-xl text-sm leading-7 text-brand-cream/82">
-                  Hotel Matoshree is presented as a trusted food franchise with veg and non-veg depth, strong meal anchors, and a clear regional dining identity.
-                </p>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-vanilla">{T(h.aboutConceptEye)}</p>
+                <h2 className="mt-3 font-display text-4xl">{T(h.conceptCaption)}</h2>
+                <p className="mt-3 max-w-xl text-sm leading-7 text-brand-cream/82">{T(h.conceptSubtext)}</p>
               </div>
             </div>
           </motion.article>
 
           <div>
-            <SectionTitle
-              description="Investor la concept quickly samajhawa mhanun hotel model chi core strength points clear blocks madhe dakhavli aahet."
-              eyebrow="About Hotel Concept"
-              title="Why the Hotel Matoshree format feels familiar, scalable, and marketable."
-            />
-
+            <SectionTitle description={T(h.conceptDesc)} eyebrow={T(h.conceptEyebrow)} title={T(h.conceptTitle)} />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {hotelConceptPoints.map((point) => (
-                <motion.article
-                  className="soft-card p-5"
-                  initial={{ opacity: 0, y: 24 }}
-                  key={point.title}
-                  transition={{ duration: 0.55 }}
-                  viewport={viewport}
-                  whileInView={{ opacity: 1, y: 0 }}
-                >
+              {conceptPoints.map((point) => (
+                <motion.article className="soft-card p-5" initial={{ opacity: 0, y: 24 }} key={point.title} transition={{ duration: 0.55 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}>
                   <h3 className="text-lg font-semibold text-brand-deep">{point.title}</h3>
                   <p className="body-copy mt-3">{point.description}</p>
                 </motion.article>
@@ -137,23 +110,10 @@ export function HotelFranchiseContent() {
 
       <section className="page-section pt-4">
         <div className="section-shell">
-          <SectionTitle
-            description="Food-heavy visuals help the franchise pitch feel stronger because signature dishes make the brand easier to imagine and sell."
-            eyebrow="Signature Dishes"
-            title="Core dishes that define the Hotel Matoshree menu story."
-          />
-
+          <SectionTitle description={T(h.dishesDesc)} eyebrow={T(h.dishesEyebrow)} title={T(h.dishesTitle)} />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {/* Signature dish cards stay data-driven for easy future updates. */}
-            {hotelSignatureDishes.map((dish) => (
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                key={dish.id}
-                transition={{ duration: 0.55 }}
-                viewport={viewport}
-                whileHover={{ y: -6 }}
-                whileInView={{ opacity: 1, y: 0 }}
-              >
+            {dishes.map((dish) => (
+              <motion.div initial={{ opacity: 0, y: 24 }} key={dish.id} transition={{ duration: 0.55 }} viewport={viewport} whileHover={{ y: -6 }} whileInView={{ opacity: 1, y: 0 }}>
                 <HotelSignatureDishCard dish={dish} />
               </motion.div>
             ))}
@@ -163,21 +123,10 @@ export function HotelFranchiseContent() {
 
       <section className="page-section pt-4">
         <div className="section-shell">
-          <SectionTitle
-            description="Hotel franchise investor sathi support stack ani brand-readiness clear asel tar decision friction kami hote."
-            eyebrow="Franchise Benefits"
-            title="Support advantages that make the hotel model easier to launch."
-          />
-
+          <SectionTitle description={T(h.benefitsDesc)} eyebrow={T(h.benefitsEyebrow)} title={T(h.benefitsTitle)} />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {hotelFranchiseBenefits.map((benefit, index) => (
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                key={benefit.title}
-                transition={{ duration: 0.55 }}
-                viewport={viewport}
-                whileInView={{ opacity: 1, y: 0 }}
-              >
+            {benefits.map((benefit, index) => (
+              <motion.div initial={{ opacity: 0, y: 24 }} key={benefit.title} transition={{ duration: 0.55 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}>
                 <HotelBenefitCard benefit={benefit} icon={benefitIcons[index]} />
               </motion.div>
             ))}
@@ -187,21 +136,10 @@ export function HotelFranchiseContent() {
 
       <section className="page-section pt-4">
         <div className="section-shell grid gap-6 lg:grid-cols-[0.98fr_1.02fr]">
-          <motion.article
-            className="panel-card p-6 sm:p-7"
-            initial={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.55 }}
-            viewport={viewport}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
-            <SectionTitle
-              description="Location fit hotel format sathi khup important aahe, especially family traffic and visibility sathi."
-              eyebrow="Ideal Location"
-              title="Catchments where Hotel Matoshree can naturally attract stronger footfall."
-            />
-
+          <motion.article className="panel-card p-6 sm:p-7" initial={{ opacity: 0, y: 24 }} transition={{ duration: 0.55 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}>
+            <SectionTitle description={T(h.locationDesc)} eyebrow={T(h.locationEyebrow)} title={T(h.locationTitle)} />
             <div className="mt-6 flex flex-wrap gap-3">
-              {hotelIdealLocations.map((location) => (
+              {idealLocations.map((location) => (
                 <div className="chip inline-flex items-center gap-2" key={location}>
                   <MapPin className="h-4 w-4 text-brand-red" />
                   {location}
@@ -210,29 +148,12 @@ export function HotelFranchiseContent() {
             </div>
           </motion.article>
 
-          <motion.article
-            className="panel-card p-6 sm:p-7"
-            initial={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.55, delay: 0.05 }}
-            viewport={viewport}
-            whileInView={{ opacity: 1, y: 0 }}
-          >
-            <SectionTitle
-              description="The page keeps investment discussion intentionally open-ended for now, so future real business conversation can take over naturally."
-              eyebrow="Investment Details Placeholder"
-              title="Discussion-led investment flow."
-            />
-
+          <motion.article className="panel-card p-6 sm:p-7" initial={{ opacity: 0, y: 24 }} transition={{ duration: 0.55, delay: 0.05 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}>
+            <SectionTitle description={T(h.investDesc)} eyebrow={T(h.investEyebrow)} title={T(h.investTitle)} />
             <div className="mt-6 rounded-[28px] border border-brand-saffron/24 bg-brand-saffron/10 p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-red/74">
-                Note
-              </p>
-              <p className="mt-3 text-lg font-semibold text-brand-deep">
-                {hotelInvestmentPlaceholder}
-              </p>
-              <p className="body-copy mt-3">
-                Site selection, format, footprint, and rollout plan vary by city, so final numbers can be shared after discovery discussion.
-              </p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-brand-red/74">{T(h.investNote)}</p>
+              <p className="mt-3 text-lg font-semibold text-brand-deep">{hotelInvestmentPlaceholder}</p>
+              <p className="body-copy mt-3">{T(h.investNoteText)}</p>
             </div>
           </motion.article>
         </div>
@@ -240,12 +161,7 @@ export function HotelFranchiseContent() {
 
       <section className="page-section pt-4">
         <div className="section-shell">
-          <SectionTitle
-            description="Dummy branch proof helps investors see the regional restaurant story in a more concrete way."
-            eyebrow="Hotel Branch Proof"
-            title="Existing hotel branch examples from the Matoshree portfolio."
-          />
-
+          <SectionTitle description={T(h.branchDesc)} eyebrow={T(h.branchEyebrow)} title={T(h.branchTitle)} />
           <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {proofBranches.map((branch) => (
               <BranchCard branch={branch} key={branch.id} />
@@ -258,26 +174,19 @@ export function HotelFranchiseContent() {
         <div className="section-shell">
           <motion.div
             className="overflow-hidden rounded-[34px] bg-[linear-gradient(135deg,#7f241b_0%,#a43d23_45%,#dc8532_100%)] px-6 py-8 text-brand-cream shadow-[0_24px_60px_rgba(92,38,23,0.22)] sm:px-8 sm:py-10 lg:px-10 lg:py-12"
-            initial={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.6 }}
-            viewport={viewport}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 24 }} transition={{ duration: 0.6 }} viewport={viewport} whileInView={{ opacity: 1, y: 0 }}
           >
             <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto]">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-brand-cream">
                   <Building2 className="h-4 w-4" />
-                  Hotel Franchise CTA
+                  {T(h.ctaEyebrow)}
                 </span>
-                <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">
-                  तुमच्या शहरात Hotel Matoshree सुरू करायचं आहे?
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-brand-cream/84 sm:text-base">
-                  Trusted food brand, family restaurant appeal, ani strong Maharashtra identity sobat franchise discussion start kara.
-                </p>
+                <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl">{T(h.ctaHeading)}</h2>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-brand-cream/84 sm:text-base">{T(h.ctaText)}</p>
               </div>
               <CTAButton className="w-full sm:w-auto" to="/hotel-franchise-inquiry" variant="secondary">
-                Apply Now
+                {T(h.applyNow)}
               </CTAButton>
             </div>
           </motion.div>

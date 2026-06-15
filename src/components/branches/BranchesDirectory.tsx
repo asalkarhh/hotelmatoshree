@@ -22,17 +22,19 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
     { key: "tea"   as const, label: T(d.tabTea),   icon: CupSoda  },
   ];
 
-  const sourceBranches =
-    activeTab === "all" ? [...hotelBranches, ...teaBranches]
-    : activeTab === "hotel" ? hotelBranches
-    : teaBranches;
-
   const normalizedSearch = search.trim().toLowerCase();
-  const filteredBranches = sourceBranches.filter((branch) =>
+  const filterFn = (branch: Branch) =>
     !normalizedSearch ||
     branch.name.toLowerCase().includes(normalizedSearch) ||
-    branch.city.toLowerCase().includes(normalizedSearch)
-  );
+    branch.city.toLowerCase().includes(normalizedSearch);
+
+  const filteredHotelBranches = hotelBranches.filter(filterFn);
+  const filteredTeaBranches = teaBranches.filter(filterFn);
+
+  const totalCount =
+    activeTab === "all" ? filteredHotelBranches.length + filteredTeaBranches.length
+    : activeTab === "hotel" ? filteredHotelBranches.length
+    : filteredTeaBranches.length;
 
   const headingText =
     activeTab === "all"   ? T(d.allHeading)
@@ -113,17 +115,41 @@ export function BranchesDirectory({ hotelBranches, teaBranches }: BranchesDirect
             <h2 className="mt-2 font-display text-3xl text-brand-deep">{headingText}</h2>
           </div>
           <p className="rounded-full border border-brand-brown/10 bg-white/75 px-4 py-2 text-sm font-semibold text-brand-brown/72">
-            {filteredBranches.length} {filteredBranches.length === 1 ? T(d.branchFoundOne) : T(d.branchFound)}
+            {totalCount} {totalCount === 1 ? T(d.branchFoundOne) : T(d.branchFound)}
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {filteredBranches.map((branch) => (
-            <BranchCard branch={branch} key={branch.id} showActions />
-          ))}
-        </div>
+        {activeTab === "all" || activeTab === "hotel" ? (
+          <div className={activeTab === "all" ? "mb-12" : ""}>
+            {activeTab === "all" && filteredHotelBranches.length > 0 && (
+              <h3 className="mb-6 mt-10 font-display text-2xl text-brand-deep">
+                {T(d.hotelHeading)}
+              </h3>
+            )}
+            <div className={activeTab === "all" && filteredHotelBranches.length > 0 ? "grid gap-6 lg:grid-cols-2 xl:grid-cols-3" : "mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3"}>
+              {filteredHotelBranches.map((branch) => (
+                <BranchCard branch={branch} key={branch.id} showActions />
+              ))}
+            </div>
+          </div>
+        ) : null}
 
-        {filteredBranches.length === 0 ? (
+        {activeTab === "all" || activeTab === "tea" ? (
+          <div>
+            {activeTab === "all" && filteredTeaBranches.length > 0 && (
+              <h3 className="mb-6 mt-10 font-display text-2xl text-brand-deep">
+                {T(d.teaHeading)}
+              </h3>
+            )}
+            <div className={activeTab === "all" && filteredTeaBranches.length > 0 ? "grid gap-6 lg:grid-cols-2 xl:grid-cols-3" : "mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3"}>
+              {filteredTeaBranches.map((branch) => (
+                <BranchCard branch={branch} key={branch.id} showActions />
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {totalCount === 0 ? (
           <motion.div
             animate={{ opacity: 1, y: 0 }}
             className="panel-card mt-8 p-8 text-center"

@@ -20,26 +20,6 @@ export const hotelBranches = [
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
   },
   {
-    id: "hotel-latur",
-    vertical: "hotel",
-    name: "Hotel Dharashiv Che Matoshree (Shakha 5)",
-    managerName: "Mangesh Badgire",
-    tagline: "एकदा यायलाच लागत.",
-    city: "Latur",
-    locality: "Sai Naka",
-    address: {
-      en: "Shop No 1 Main Road, near Bus Stop, Kashilingeshwar Nagar, Maharashtra 413531",
-      mr: "शॉप नं. १, मेन रोड, बस स्टॉप जवळ, काशीलिंगेश्वर नगर, महाराष्ट्र ४१३५३१"
-    },
-    phone: "+91 89993 22258",
-    mapLink: "https://maps.app.goo.gl/mzjSjZmdniJPfbzs5?g_st=ic",
-    timings: "11:00 AM to 11:00 PM",
-    format: "Hotel Franchise",
-    specialty: "Special chicken dum biryani, veg and non-veg thali",
-    note: "Branch Number - 5",
-    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
     id: "hotel-barshi",
     vertical: "hotel",
     name: "Hotel Dharashiv Che Matoshree (Shakha 2)",
@@ -78,6 +58,26 @@ export const hotelBranches = [
     specialty: "Special chicken dum biryani, veg and non-veg thali",
     note: "Branch Number - 3",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
+  },
+  {
+    id: "hotel-latur",
+    vertical: "hotel",
+    name: "Hotel Dharashiv Che Matoshree (Shakha 5)",
+    managerName: "Mangesh Badgire",
+    tagline: "एकदा यायलाच लागत.",
+    city: "Latur",
+    locality: "Sai Naka",
+    address: {
+      en: "Shop No 1 Main Road, near Bus Stop, Kashilingeshwar Nagar, Maharashtra 413531",
+      mr: "शॉप नं. १, मेन रोड, बस स्टॉप जवळ, काशीलिंगेश्वर नगर, महाराष्ट्र ४१३५३१"
+    },
+    phone: "+91 89993 22258",
+    mapLink: "https://maps.app.goo.gl/mzjSjZmdniJPfbzs5?g_st=ic",
+    timings: "11:00 AM to 11:00 PM",
+    format: "Hotel Franchise",
+    specialty: "Special chicken dum biryani, veg and non-veg thali",
+    note: "Branch Number - 5",
+    image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: "hotel-solapur",

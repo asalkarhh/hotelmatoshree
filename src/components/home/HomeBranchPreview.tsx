@@ -66,7 +66,7 @@ export function HomeBranchPreview() {
                     <div className="mt-4 grid gap-3 text-sm text-brand-brown/74">
                       <div className="flex items-start gap-2">
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
-                        <span>{branch.address}</span>
+                        <span>{typeof branch.address === "string" ? branch.address : T(branch.address as { mr: string; en: string })}</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />

@@ -1,13 +1,16 @@
 export const teaBranches = [
   {
-    id: "tea-pune",
+    id: "tea-dharashiv",
     vertical: "tea",
     name: "Hotel Matoshree Chahawala",
     managerName: "Prof. Manoj Surwase",
     tagline: "एकदा यायलाच लागत.",
     city: "Dharashiv",
     locality: "Jijau Chowk",
-    address: "Jijau Chowk, Barshi Naka, Dharashiv, Maharashtra",
+    address: {
+      en: "Jijau Chowk, Barshi Naka, Dharashiv, Maharashtra",
+      mr: "जिजाऊ चौक, बार्शी नाका, धाराशिव, महाराष्ट्र"
+    },
     phone: "+91 91753 79695",
     mapLink: "https://maps.google.com/?q=Jijau+Chowk+Barshi+Naka+Dharashiv+Maharashtra",
     timings: "7:00 AM to 11:00 PM",
